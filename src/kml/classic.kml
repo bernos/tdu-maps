@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"
+	xmlns:gx="http://www.google.com/kml/ext/2.2">
+  <Document>
+    <name>GPS device</name>
+    <Snippet>Created Tue Jul  3 14:02:31 2012</Snippet>
+<!-- Normal track style -->
+    <Style id="track_n">
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <IconStyle>
+        <scale>.5</scale>
+        <Icon>
+          <href>http://earth.google.com/images/kml-icons/track-directional/track-none.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+<!-- Highlighted track style -->
+    <Style id="track_h">
+      <IconStyle>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://earth.google.com/images/kml-icons/track-directional/track-none.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <StyleMap id="track">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#track_n</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#track_h</styleUrl>
+      </Pair>
+    </StyleMap>
+<!-- Normal waypoint style -->
+    <Style id="waypoint_n">
+      <IconStyle>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pal4/icon61.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+<!-- Highlighted waypoint style -->
+    <Style id="waypoint_h">
+      <IconStyle>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pal4/icon61.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <StyleMap id="waypoint">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#waypoint_n</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#waypoint_h</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="lineStyle">
+      <LineStyle>
+        <color>99FF0000</color>
+        <width>4</width>
+      </LineStyle>
+    </Style>
+    <Folder>
+      <name>Tracks</name>
+      <Folder>
+        <Snippet/>
+        <description>
+<![CDATA[<table>
+            <tr><td><b>Distance</b> 1.1 mi </td></tr>
+            <tr><td><b>Min Alt</b> 621371.192 mi </td></tr>
+            <tr><td><b>Max Alt</b> 0.000 ft </td></tr>
+          </table>]]>
+        </description>
+        <Placemark>
+          <name>Path</name>
+          <styleUrl>#lineStyle</styleUrl>
+          <LineString>
+            <tessellate>1</tessellate>
+            <coordinates>
+              138.611630,-34.922420,0.000000
+              138.610950,-34.922450,0.000000
+              138.611040,-34.923760,0.000000
+              138.611450,-34.923820,0.000000
+              138.611700,-34.924000,0.000000
+              138.611820,-34.924210,0.000000
+              138.611860,-34.924720,0.000000
+              138.611930,-34.924860,0.000000
+              138.612020,-34.924960,0.000000
+              138.612320,-34.925060,0.000000
+              138.612320,-34.925060,0.000000
+              138.613110,-34.925030,0.000000
+              138.615100,-34.925080,0.000000
+              138.618280,-34.925070,0.000000
+              138.618610,-34.924930,0.000000
+              138.618680,-34.924800,0.000000
+              138.616790,-34.923420,0.000000
+              138.616790,-34.923420,0.000000
+              138.616010,-34.922870,0.000000
+              138.615570,-34.922640,0.000000
+              138.615000,-34.922210,0.000000
+              138.613380,-34.922340,0.000000
+              138.611630,-34.922420,0.000000
+            </coordinates>
+          </LineString>
+        </Placemark>
+      </Folder>
+    </Folder>
+    <LookAt>
+      <longitude>138.614815</longitude>
+      <latitude>-34.923645</latitude>
+      <range>1300.000000</range>
+    </LookAt>
+  </Document>
+</kml>
