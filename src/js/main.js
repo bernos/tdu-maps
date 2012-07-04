@@ -1,8 +1,8 @@
 require.config({
   paths: {
-    jquery : "http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min",
-    underscore: "lib/underscore.min",
-    backbone: "lib/backbone.min",
+    jquery : "lib/jquery-1.7.2",
+    underscore: "lib/underscore",
+    backbone: "lib/backbone",
     async: "lib/requirejs-plugins/async",
     domready: "lib/requirejs-plugins/domready"
   },

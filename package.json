@@ -1,0 +1,23 @@
+{
+  "author": {
+    "name":"Brendan McMahon",
+    "email": "bernos@gmail.com"
+  },
+  "name": "tdu-maps",
+  "description": "Google maps experiments for tour down under",
+  "version": "0.0.1",
+  "homepage": "http://github.com/bernos/tdu-maps",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": "~0.6.7"
+  },
+  "devDependencies": {
+    "mocha" : "latest",
+    "requirejs" : "latest",
+    "chai" : "latest",
+    "grunt" : "latest",
+    "grunt-mocha" : "latest"
+  }
+}
