@@ -1,4 +1,4 @@
-define(function() {
+define(["gmaps"], function(gmaps) {
   return {
     stages : {
       classic : {
@@ -7,7 +7,7 @@ define(function() {
         polylineOptions: {
           strokeColor: "#FF0000",
           strokeOpacity: 0.7,
-          strokeWeight: 2
+          strokeWeight: 4
         }
         //kml : "http://www.bikemap.net/route/1290698/export.kml"
       },
@@ -17,7 +17,7 @@ define(function() {
         polylineOptions: {
           strokeColor: "#FFCC00",
           strokeOpacity: 0.7,
-          strokeWeight: 2
+          strokeWeight: 4
         }
         //kml : "http://www.bikemap.net/route/1657601/export.kml"
       },
@@ -27,7 +27,7 @@ define(function() {
         polylineOptions: {
           strokeColor: "#00AA00",
           strokeOpacity: 0.7,
-          strokeWeight: 2
+          strokeWeight: 4
         }
         //kml : "http://www.bikemap.net/route/1657655/export.kml"
       },
@@ -37,7 +37,7 @@ define(function() {
         polylineOptions: {
           strokeColor: "#0000FF",
           strokeOpacity: 0.7,
-          strokeWeight: 2
+          strokeWeight: 4
         }
         //kml : "http://www.bikemap.net/route/1657668/export.kml"
       },
@@ -47,7 +47,7 @@ define(function() {
         polylineOptions: {
           strokeColor: "#00CCFF",
           strokeOpacity: 0.7,
-          strokeWeight: 2
+          strokeWeight: 4
         }
         //kml : "http://www.bikemap.net/route/1657680/export.kml"
       },
@@ -57,7 +57,7 @@ define(function() {
         polylineOptions: {
           strokeColor: "#FF0000",
           strokeOpacity: 0.7,
-          strokeWeight: 2
+          strokeWeight: 4
         }
         //kml : "http://www.bikemap.net/route/1657684/export.kml"
       },
@@ -67,16 +67,27 @@ define(function() {
         polylineOptions: {
           strokeColor: "#FF0000",
           strokeOpacity: 0.7,
-          strokeWeight: 2
+          strokeWeight: 4
         }
         //kml : "http://www.bikemap.net/route/1290702/export.kml"
       }
     },
 
-    mapOptions : {
-      center: new google.maps.LatLng(-34.397, 150.644),
-      zoom: 8,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
+    mapView : {
+      googleMapsOptions : {
+        center: new gmaps.LatLng(-34.78928170189535, 138.74443334960938),
+        zoom: 9,
+        mapTypeId: gmaps.MapTypeId.HYBRID
+      }
+    }    
   };
 });
+
+
+/*ca: ne
+b: -35.36134096840164
+j: -34.47798181876193
+__proto__: ne
+ea: je
+b: 138.4210233154297
+j: 139.2449979248047*/
