@@ -22,9 +22,33 @@ require.config({
   }
 });
 
-require(["domready", "gmaps", "jquery", "underscore", "config", "backbone", "models/StageModel", "views/MapView"], function(domready, gmaps, $, _, config, Backbone, StageModel, MapView) {
+require([
+  "domready", 
+  "gmaps", 
+  "jquery", 
+  "underscore", 
+  "config", 
+  "backbone", 
+  "models/StageModel", 
+  "views/MapView", 
+  "models/StageCollection"
+], 
+
+function(domready, gmaps, $, _, config, Backbone, StageModel, MapView, StageCollection) {
 
   domready(function() {
+
+    var collection = new StageCollection();
+
+    collection.bind("all", function() {
+      console.log("collection changed ", arguments);
+    });
+
+    window.stages = collection;
+
+    collection.fetch();
+
+
 
     config.mapView.el = '#map_canvas';
 

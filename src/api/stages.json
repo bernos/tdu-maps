@@ -1,0 +1,65 @@
+[
+  {
+    "name" : "Classic",
+    "kml" : "/kml/classic.kml",
+    "polylineOptions": {
+      "strokeColor": "#FF0000",
+      "strokeOpacity": 0.7,
+      "strokeWeight": 4
+    }
+  },
+  {
+    "name" : "Classic",
+    "kml" : "/kml/1.kml",
+    "polylineOptions": {
+      "strokeColor": "#FFCC00",
+      "strokeOpacity": 0.7,
+      "strokeWeight": 4
+    }
+  },
+  {
+    "name" : "Classic",
+    "kml" : "/kml/2.kml",
+    "polylineOptions": {
+      "strokeColor": "#00AA00",
+      "strokeOpacity": 0.7,
+      "strokeWeight": 4
+    }
+  },
+  {
+    "name" : "Classic",
+    "kml" : "/kml/3.kml",
+    "polylineOptions": {
+      "strokeColor": "#0000FF",
+      "strokeOpacity": 0.7,
+      "strokeWeight": 4
+    }
+  },
+  {
+    "name" : "Classic",
+    "kml" : "/kml/4.kml",
+    "polylineOptions": {
+      "strokeColor": "#00CCFF",
+      "strokeOpacity": 0.7,
+      "strokeWeight": 4
+    }
+  },
+  {
+    "name" : "Classic",
+    "kml" : "/kml/5.kml",
+    "polylineOptions": {
+      "strokeColor": "#FF0000",
+      "strokeOpacity": 0.7,
+      "strokeWeight": 4
+    }
+  },
+  {
+    "name" : "Classic",
+    "kml" : "/kml/6.kml",
+    "polylineOptions": {
+      "strokeColor": "#FF0000",
+      "strokeOpacity": 0.7,
+      "strokeWeight": 4
+    }
+  }
+]
