@@ -74,6 +74,7 @@ define(["gmaps"], function(gmaps) {
     },
 
     mapView : {
+      el : '#map_canvas',
       googleMapsOptions : {
         center: new gmaps.LatLng(-34.78928170189535, 138.74443334960938),
         zoom: 9,

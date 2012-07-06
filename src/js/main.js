@@ -9,7 +9,7 @@ require.config({
 
   shim: {
     backbone: {
-      deps: ["underscore"],
+      deps: ["underscore", "jquery"],
       exports: function()  {
         return Backbone.noConflict();
       }
@@ -23,62 +23,50 @@ require.config({
 });
 
 require([
-  "domready", 
-  "gmaps", 
-  "jquery", 
+  "domready",
   "underscore", 
   "config", 
-  "backbone", 
-  "models/StageModel", 
-  "views/MapView", 
-  "models/StageCollection"
+  "models/models", 
+  "views/views"
 ], 
 
-function(domready, gmaps, $, _, config, Backbone, StageModel, MapView, StageCollection) {
+function(domready, _, config, models, views) {
 
-  domready(function() {
+  var stageCollection;
+  var mapView;
 
-    var collection = new StageCollection();
+  /**
+   * Initialize the app. This is the main entry point. Gets called once the dom has
+   * loaded
+   */
+  function init() {
+    initModel();
+    initView(); 
 
-    collection.bind("all", function() {
-      console.log("collection changed ", arguments);
-    });
+    stageCollection.fetch();
+  }
 
-    window.stages = collection;
+  /**
+   * Initialize the model tier
+   */
+  function initModel() {
+    stageCollection = new models.StageCollection();
+  }
 
-    collection.fetch();
 
+  /**
+   * Initialize the view
+   */
+  function initView() {
+    var mapOptions = {
+      stageCollection : stageCollection
+    }
 
+    mapView = new views.MapView(_.extend(mapOptions, config.mapView));
 
-    config.mapView.el = '#map_canvas';
+    mapView.render();
+  }
 
-    var mapView = new MapView(config.mapView).render();
-
-    _.each(config.stages, function(stageConfig, id) {
-      var stage = new StageModel(stageConfig);
-
-      stage.bind("kml:loaded", function(s) {
-        s.get('routePolyLine').setMap(mapView.googleMap);
-
-        var points = s.get('routePolyLine').getPath().getArray();
-
-        var start = new gmaps.Marker({
-          map : mapView.googleMap,
-          position : points[0],
-          icon: 'beachflag.png'
-
-        });
-
-        var finish = new gmaps.Marker({
-          map : mapView.googleMap,
-          position : points[points.length - 1]
-        });
-        //{position:}
-
-      });
-
-      stage.loadKml();
-    });
-  });
+  domready(init);
 }); 
 
