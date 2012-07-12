@@ -1,6 +1,6 @@
 [
   {
-    "name" : "Classic",
+    "name" : "<%= config.stageNames[0] %>",
     "kml" : "/kml/classic.kml",
     "polylineOptions": {
       "strokeColor": "#FF0000",
@@ -9,7 +9,7 @@
     }
   },
   {
-    "name" : "Classic",
+    "name" : "<%= config.stageNames[1] %>",
     "kml" : "/kml/1.kml",
     "polylineOptions": {
       "strokeColor": "#FFCC00",
@@ -18,7 +18,7 @@
     }
   },
   {
-    "name" : "Classic",
+    "name" : "<%= config.stageNames[2] %>",
     "kml" : "/kml/2.kml",
     "polylineOptions": {
       "strokeColor": "#00AA00",
@@ -27,7 +27,7 @@
     }
   },
   {
-    "name" : "Classic",
+    "name" : "<%= config.stageNames[3] %>",
     "kml" : "/kml/3.kml",
     "polylineOptions": {
       "strokeColor": "#0000FF",
@@ -36,7 +36,7 @@
     }
   },
   {
-    "name" : "Classic",
+    "name" : "<%= config.stageNames[4] %>",
     "kml" : "/kml/4.kml",
     "polylineOptions": {
       "strokeColor": "#00CCFF",
@@ -45,7 +45,7 @@
     }
   },
   {
-    "name" : "Classic",
+    "name" : "<%= config.stageNames[5] %>",
     "kml" : "/kml/5.kml",
     "polylineOptions": {
       "strokeColor": "#FF0000",
@@ -54,7 +54,7 @@
     }
   },
   {
-    "name" : "Classic",
+    "name" : "<%= config.stageNames[6] %>",
     "kml" : "/kml/6.kml",
     "polylineOptions": {
       "strokeColor": "#FF0000",

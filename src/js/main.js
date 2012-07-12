@@ -1,3 +1,4 @@
+/*! main.js */
 require.config({
   paths: {
     jquery : "lib/jquery-1.7.2",
@@ -33,6 +34,7 @@ require([
 function(domready, _, config, models, views) {
 
   var stageCollection;
+  var liveFeedCollection;
   var mapView;
 
   /**
@@ -51,6 +53,19 @@ function(domready, _, config, models, views) {
    */
   function initModel() {
     stageCollection = new models.StageCollection();
+
+    liveFeedCollection = new models.LiveFeedCollection(config.liveFeeds.feeds);
+
+    _.each(liveFeedCollection.models, function(model) {
+
+      model.items.bind("reset", function() {
+        console.log("loaded feed", arguments);
+      })
+
+      model.items.fetch();
+    });
+
+    console.log(liveFeedCollection)
   }
 
 

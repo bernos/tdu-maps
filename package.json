@@ -14,14 +14,12 @@
     "node": "~0.6.7"
   },
   "devDependencies": {
-    "jquery" : "1.7.2",
     "mocha" : "latest",
     "requirejs" : "latest",
     "chai" : "latest",
-    "grunt" : "latest",
-    "jsdom" : "latest",
-    "xmlhttprequest" : "latest",
+    "grunt" : "latest",    
     "grunt-mocha" : "latest",
-    "grunt-requirejs" : "latest"
+    "grunt-requirejs" : "latest",
+    "grunt-contrib" : "latest"
   }
 }

@@ -34,12 +34,7 @@ module.exports = function(grunt) {
     }
   });
 
-
-
   grunt.loadNpmTasks('grunt-requirejs');
   // Default task.
   grunt.registerTask('default', 'requirejs');
-
-
-
 };
