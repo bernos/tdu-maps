@@ -3,11 +3,15 @@
  * Module for aggregating all our views
  */
 define([
-	'views/MapView'
+	'views/ViewBase',
+	'views/MapView',
+	'views/ResultFeedView'
 ], 
 
-function(MapView) {
+function(ViewBase, MapView, ResultFeedView) {
 	return {
-		MapView : MapView
+		ViewBase : ViewBase,
+		MapView : MapView,
+		ResultFeedView : ResultFeedView
 	}
 });

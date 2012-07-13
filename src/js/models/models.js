@@ -5,29 +5,38 @@
 define([
 	'models/StageCollection', 
 	'models/StageModel',
-	'models/ResultCollection',
 	'models/LiveFeed',
 	'models/LiveFeedCollection',
 	'models/LiveFeedItem',
-	'models/LiveFeedItemCollection'
+	'models/LiveFeedItemCollection',
+	'models/ResultFeedItem',
+	'models/ResultFeedItemCollection',
+	'models/ResultFeed',
+	'models/StageResults'
 ], 
 
 function(
 	StageCollection, 
 	StageModel, 
-	ResultCollection, 
 	LiveFeed, 
 	LiveFeedCollection, 
 	LiveFeedItem, 
-	LiveFeedItemCollection
+	LiveFeedItemCollection,
+	ResultFeedItem,
+	ResultFeedItemCollection,
+	ResultFeed,
+	StageResults
 ) {
 	return {
-		StageCollection 		: StageCollection,
-		StageModel 				: StageModel,
-		ResultCollection 		: ResultCollection,
-		LiveFeed 				: LiveFeed,
-		LiveFeedCollection 		: LiveFeedCollection,
-		LiveFeedItem 			: LiveFeedItem,
-		LiveFeedItemCollection 	: LiveFeedItemCollection
+		StageCollection 					: StageCollection,
+		StageModel 								: StageModel,
+		LiveFeed 									: LiveFeed,
+		LiveFeedCollection 				: LiveFeedCollection,
+		LiveFeedItem 							: LiveFeedItem,
+		LiveFeedItemCollection 		: LiveFeedItemCollection,
+		ResultFeedItem 						: ResultFeedItem,
+		ResultFeedItemCollection 	: ResultFeedItemCollection,
+		ResultFeed 								: ResultFeed,
+		StageResults							: StageResults
 	}
 });

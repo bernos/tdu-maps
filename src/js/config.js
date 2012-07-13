@@ -82,6 +82,49 @@ define(["gmaps"], function(gmaps) {
     mapView     : mapView,
     liveFeeds   : liveFeeds,
 
+    resultFeeds : {
+      url : "/api/results/<%= stageId %>/<%= jerseyId %>.json",
+
+      stages : [
+        {
+          name : "General classification",
+          stageId : 0,
+          feeds : [
+            {
+              name : "Jayco sprint",
+              jerseyCode : "SPR",
+              jerseyImage : "asdf"
+            },
+            {
+              name : "Cycle Instead Young Rider",
+              jerseyCode : "YNG",
+              jerseyImage : "asdf"
+            },
+            {
+              name : "SA Brilliant Blend Winning Team",
+              jerseyCode : "LDT",
+              jerseyImage : "asdf"
+            },
+            {
+              name : "Santos Ochre Leader's Jersey (General Classification)",
+              jerseyCode : "SAN",
+              jerseyImage : "asdf"
+            },
+            {
+              name : "Skoda King of the Mountain",
+              jerseyCode : "KOM",
+              jerseyImage : "asdf"
+            },
+            {
+              name : "Hindmarsh Most Aggressive Rider",
+              jerseyCode : "MAR",
+              jerseyImage : "asdf"
+            }
+          ]
+        }
+      ]
+    },
+
     /* result feeds */
     results : [
       {

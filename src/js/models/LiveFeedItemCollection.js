@@ -6,7 +6,9 @@ define(["config", "underscore", "backbone"],
 
 function(config, _, Backbone) {
 	return Backbone.Collection.extend({
-		initialize: function(options) {
+		initialize: function(models, options) {
+			options = options || {};
+
 			_.extend(this, options);
 		},
 

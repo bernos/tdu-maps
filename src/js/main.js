@@ -12,12 +12,14 @@ require.config({
     underscore: "lib/underscore",
     backbone: "lib/backbone",
     async: "lib/requirejs-plugins/async",
-    domready: "lib/requirejs-plugins/domready"
+    domready: "lib/requirejs-plugins/domready",
+    text: "lib/requirejs-plugins/text",
+    handlebars: "lib/Handlebars"
   },
 
   shim: {
     backbone: {
-      deps: ["underscore", "jquery"],
+      deps: ["jquery", "underscore"],
       exports: function()  {
         return Backbone.noConflict();
       }
@@ -25,6 +27,11 @@ require.config({
     underscore: {
       exports : function() {
         return _.noConflict();
+      }
+    },
+    handlebars : {
+      exports : function() {
+        return Handlebars;
       }
     }
   }
@@ -34,6 +41,7 @@ require.config({
  * Our application entry point
  */
 require([
+  "jquery",
   "domready",
   "underscore", 
   "config", 
@@ -41,7 +49,7 @@ require([
   "views/views"
 ], 
 
-function(domready, _, config, models, views) {
+function($, domready, _, config, models, views) {
 
   var stageCollection;
   var liveFeedCollection;
@@ -53,7 +61,7 @@ function(domready, _, config, models, views) {
    */
   function init() {
     initModel();
-    initView(); 
+  //  initView(); 
 
     stageCollection.fetch();
   }
@@ -66,16 +74,89 @@ function(domready, _, config, models, views) {
 
     liveFeedCollection = new models.LiveFeedCollection(config.liveFeeds.feeds);
 
+
+    var resultFeedModel = new models.ResultFeed({
+      stageId : 0,
+      jerseyId : 'SPR',
+      name : "Jersey name here",
+      jerseyIcon : "http://tourdownunder.com.au/images/results/jersey-images-29Px/santos-ochre-leaders-jersey.jpg"
+    });
+
+
+    // TEMP
+    var resultFeedView = new views.ResultFeedView({
+      el : "#map_canvas",
+      model : resultFeedModel
+    });
+
+    resultFeedModel.get('items').fetch();
+    // */
+
+
+
+
+    // TEMP    
+    /*
     _.each(liveFeedCollection.models, function(model) {
 
-      model.items.bind("reset", function() {
+      model.get('items').bind("reset", function() {
         console.log("loaded feed", arguments);
       })
 
-      model.items.fetch();
+      model.get('items').fetch();
+    });
+    // */
+    // END TEMP
+
+    // TEMP
+    /*
+    var resultFeed = new models.ResultFeed({
+      name : "Some jersey name",
+      jerseyId : "SPR",
+      jerseyIcon : "aasdfababa"
     });
 
-    console.log(liveFeedCollection)
+    resultFeed.set("stageId", 0);
+
+    resultFeed.get('items').bind("reset", function() {
+      console.log("got result feed", arguments)
+    });
+
+    resultFeed.get('items').fetch();
+    // */
+    // END TEMP
+
+    /*
+    // TEMP
+    var stageResults = new models.StageResults({
+      stageId : 0,
+      name : "General classification",
+      feeds : [
+        {
+          name : "Some jersey name",
+          jerseyId : "SPR",
+          jerseyIcon : "aasdfababa"
+        },
+        {
+          name : "Some jersey name",
+          jerseyId : "ABC",
+          jerseyIcon : "aasdfababa"
+        }
+      ]
+    });
+
+    _.each(stageResults.get('feeds').models, function(resultFeed) {
+
+      console.log("resultFeed", resultFeed)
+
+      resultFeed.get('items').bind('reset', function() {
+        console.log("loaded results", arguments);
+      });
+      resultFeed.get('items').fetch();
+    });
+
+    // */
+    // END TEMP
   }
 
   /**
