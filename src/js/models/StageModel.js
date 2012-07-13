@@ -1,26 +1,32 @@
-define(["gmaps", "backbone", "jquery", "kml"], function(gmaps, Backbone, $, kml) {
-	
-	return Backbone.Model.extend({
-	    loadKml: function() {
-	    	var model = this;
+/*!
+ * models/StageModel.js
+ * Model representing a single stage in the tour down under
+ */
+define(["gmaps", "backbone", "jquery", "helpers/KmlHelper"],
 
-		    if (this.get('kml')) {
+function(gmaps, Backbone, $, KmlHelper) {
 
-		    	$.get(this.get('kml'), function(data) {
-		    		var coords = $(data).find("LineString coordinates");
-		    		var path   = kml.coordinateStringToGMapsLatLngArray(coords.text());
-		    		var polylineOptions = model.get("polylineOptions");
+  return Backbone.Model.extend({
+    loadKml: function() {
+      var model = this;
 
-		    		model.set("routePolyLine", new gmaps.Polyline({
-			          path: path,
-			          strokeColor: polylineOptions.strokeColor,
-			          strokeOpacity: polylineOptions.strokeOpacity,
-			          strokeWeight: polylineOptions.strokeWeight
-			        }));
+      if (this.get('kml')) {
 
-			        model.trigger("kml:loaded", model);
-		    	});		    	
-	    	} 
-	    }
-	});
+        $.get(this.get('kml'), function(data) {
+          var coords = $(data).find("LineString coordinates");
+          var path = KmlHelper.coordinateStringToGMapsLatLngArray(coords.text());
+          var polylineOptions = model.get("polylineOptions");
+
+          model.set("routePolyLine", new gmaps.Polyline({
+            path: path,
+            strokeColor: polylineOptions.strokeColor,
+            strokeOpacity: polylineOptions.strokeOpacity,
+            strokeWeight: polylineOptions.strokeWeight
+          }));
+
+          model.trigger("kml:loaded", model);
+        });
+      }
+    }
+  });
 });

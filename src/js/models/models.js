@@ -1,3 +1,7 @@
+/*!
+ * models.js
+ * Agregates and exposes all of our model classes
+ */
 define([
 	'models/StageCollection', 
 	'models/StageModel',
@@ -8,14 +12,22 @@ define([
 	'models/LiveFeedItemCollection'
 ], 
 
-function(StageCollection, StageModel, ResultCollection, LiveFeed, LiveFeedCollection, LiveFeedItem, LiveFeedItemCollection) {
+function(
+	StageCollection, 
+	StageModel, 
+	ResultCollection, 
+	LiveFeed, 
+	LiveFeedCollection, 
+	LiveFeedItem, 
+	LiveFeedItemCollection
+) {
 	return {
-		StageCollection : StageCollection,
-		StageModel : StageModel,
-		ResultCollection : ResultCollection,
-		LiveFeed: LiveFeed,
-		LiveFeedCollection : LiveFeedCollection,
-		LiveFeedItem : LiveFeedItem,
-		LiveFeedItemCollection : LiveFeedItemCollection
+		StageCollection 		: StageCollection,
+		StageModel 				: StageModel,
+		ResultCollection 		: ResultCollection,
+		LiveFeed 				: LiveFeed,
+		LiveFeedCollection 		: LiveFeedCollection,
+		LiveFeedItem 			: LiveFeedItem,
+		LiveFeedItemCollection 	: LiveFeedItemCollection
 	}
 });

@@ -1,4 +1,10 @@
-define(["config", "underscore", "backbone"], function(config, _, Backbone) {
+/*!
+ * models/LiveFeedItemCollection.js
+ * A collection class representing a live feed
+ */
+define(["config", "underscore", "backbone"], 
+
+function(config, _, Backbone) {
 	return Backbone.Collection.extend({
 		initialize: function(options) {
 			_.extend(this, options);

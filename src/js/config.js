@@ -1,3 +1,8 @@
+/*!
+ * config.js 
+ * All our main app configuration data
+ */
+
 define(["gmaps"], function(gmaps) {
 
   /**

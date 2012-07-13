@@ -1,4 +1,10 @@
-define(["underscore", "backbone", "models/StageModel"], function(_, Backbone, StageModel) {
+/*!
+ * models/ResultCollection.js
+ * Collection class for managing Result instances
+ */
+define(["underscore", "backbone", "models/StageModel"], 
+
+function(_, Backbone, StageModel) {
 	return Backbone.Collection.extend({
 
 		initialize: function(options) {

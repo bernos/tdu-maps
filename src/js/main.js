@@ -1,4 +1,11 @@
-/*! main.js */
+/*!
+ * main.js
+ * Our application entry point
+ */
+
+/**
+ * Configuration options for requirejs AMD loader
+ */
 require.config({
   paths: {
     jquery : "lib/jquery-1.7.2",
@@ -23,6 +30,9 @@ require.config({
   }
 });
 
+/**
+ * Our application entry point
+ */
 require([
   "domready",
   "underscore", 
@@ -67,7 +77,6 @@ function(domready, _, config, models, views) {
 
     console.log(liveFeedCollection)
   }
-
 
   /**
    * Initialize the view

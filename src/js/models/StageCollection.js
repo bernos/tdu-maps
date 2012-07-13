@@ -1,9 +1,17 @@
-define(["config", "underscore", "backbone", "models/StageModel"], function(config, _, Backbone, StageModel) {
+/*!
+ * models/StageCollection.js
+ * A collection class for managing Stage instances
+ */
+define(["config", "underscore", "backbone", "models/StageModel"], 
+
+function(config, _, Backbone, StageModel) {
 	return Backbone.Collection.extend({
+		
 		model: StageModel,
+		
 		url : "/api/stages.json",
+		
 		parse : function(results) {
-			
 			// Run any text fields through template processor, passing our global
 			// config object as context
 			_.each(results, function(stage) {

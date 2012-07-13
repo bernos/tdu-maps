@@ -1,4 +1,11 @@
-define(["gmaps", "backbone", "underscore"], function(gmaps, Backbone, _) {
+/*!
+ * views/MapView.js
+ * The main view for presenting our google map to users
+ */
+
+define(["gmaps", "backbone", "underscore"], 
+
+function(gmaps, Backbone, _) {
 	return Backbone.View.extend({
 
 		/**
