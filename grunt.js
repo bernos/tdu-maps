@@ -14,7 +14,9 @@ module.exports = function(grunt) {
         underscore: "lib/underscore",
         backbone: "lib/backbone",
         async: "lib/requirejs-plugins/async",
-        domready: "lib/requirejs-plugins/domready"
+        domready: "lib/requirejs-plugins/domready",
+        text: "lib/requirejs-plugins/text",
+        handlebars: "lib/Handlebars"
       },
       shim: {
         backbone: {
@@ -26,6 +28,11 @@ module.exports = function(grunt) {
         underscore: {
           exports : function() {
             return _.noConflict();
+          }
+        },
+        handlebars : {
+          exports : function() {
+            return Handlebars;
           }
         }
       },
