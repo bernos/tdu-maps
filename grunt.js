@@ -10,7 +10,8 @@ module.exports = function(grunt) {
     requirejs: {
       baseUrl: "src/js",
       paths: {
-        jquery : "lib/jquery-1.7.2",
+        //jquery : "lib/jquery-1.7.2",
+        jquery : "lib/zepto",
         underscore: "lib/underscore",
         backbone: "lib/backbone",
         async: "lib/requirejs-plugins/async",
@@ -19,6 +20,11 @@ module.exports = function(grunt) {
         handlebars: "lib/Handlebars"
       },
       shim: {
+        jquery : {
+          exports: function() {
+            return $;
+          }
+        },
         backbone: {
           deps: ["underscore"],
           exports: function()  {

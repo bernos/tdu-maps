@@ -8,7 +8,8 @@
  */
 require.config({
   paths: {
-    jquery : "lib/jquery-1.7.2",
+    //jquery : "lib/jquery-1.7.2",
+    jquery : "lib/zepto",
     underscore: "lib/underscore",
     backbone: "lib/backbone",
     async: "lib/requirejs-plugins/async",
@@ -18,6 +19,11 @@ require.config({
   },
 
   shim: {
+    jquery : {
+      exports: function() {
+        return $;
+      }
+    },
     backbone: {
       deps: ["jquery", "underscore"],
       exports: function()  {
