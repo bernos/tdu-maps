@@ -2,7 +2,7 @@
  * models/ResultFeedItemCollection.js
  * Collection class representing a list of result feed items
  */
-define(["config", "underscore", "backbone", "./ResultFeedItem"], 
+define(["config/config", "underscore", "backbone", "./ResultFeedItem"], 
 
 function(config, _, Backbone, ResultFeedItem) {
 	return Backbone.Collection.extend({

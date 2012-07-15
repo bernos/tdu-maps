@@ -2,7 +2,7 @@
  * models/StageCollection.js
  * A collection class for managing Stage instances
  */
-define(["config", "underscore", "backbone", "models/StageModel"], 
+define(["config/config", "underscore", "backbone", "models/StageModel"], 
 
 function(config, _, Backbone, StageModel) {
 	return Backbone.Collection.extend({

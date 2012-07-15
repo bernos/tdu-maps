@@ -3,7 +3,7 @@
  * A collection of live feeds
  */
 
-define(["config", "underscore", "backbone", "./LiveFeed"], 
+define(["config/config", "underscore", "backbone", "./LiveFeed"], 
 
 function(config, _, Backbone, LiveFeed) {
 	return Backbone.Collection.extend({

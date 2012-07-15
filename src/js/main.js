@@ -8,8 +8,8 @@
  */
 require.config({
   paths: {
-    //jquery : "lib/jquery-1.7.2",
-    jquery : "lib/zepto",
+    jquery : "lib/jquery-1.7.2",
+    //jquery : "lib/zepto",
     underscore: "lib/underscore",
     backbone: "lib/backbone",
     async: "lib/requirejs-plugins/async",
@@ -49,14 +49,14 @@ require.config({
 require([
   "jquery",
   "domready",
-  "underscore", 
-  "config", 
-  "models/models", 
-  "views/views"
-], 
+  "underscore",
+  "config/config",
+  "models/models",
+  "views/views",
+  "config/stages"
+],
 
-function($, domready, _, config, models, views) {
-
+function($, domready, _, config, models, views, stages) {
   var stageCollection;
   var liveFeedCollection;
   var mapView;
@@ -67,20 +67,37 @@ function($, domready, _, config, models, views) {
    */
   function init() {
     initModel();
-  //  initView(); 
+    initView();
 
-    stageCollection.fetch();
+  //  stageCollection.fetch();
   }
 
   /**
    * Initialize the model tier
    */
   function initModel() {
-    stageCollection = new models.StageCollection();
+    stageCollection = new models.StageCollection(stages);
 
     liveFeedCollection = new models.LiveFeedCollection(config.liveFeeds.feeds);
 
 
+    // TEMP
+    /*
+    var liveFeedModel = new models.LiveFeed({
+      id : 3
+    });
+
+    var liveFeedView = new views.LiveFeedView({
+      el : "#map_canvas",
+      model : liveFeedModel
+    });
+
+    liveFeedModel.get('items').fetch();
+    // */
+    // END TEMP
+
+    // TEMP
+    /*
     var resultFeedModel = new models.ResultFeed({
       stageId : 0,
       jerseyId : 'SPR',

@@ -9,6 +9,19 @@ Run `node_modules/.bin/grunt` from the project root folder to build the project.
 Better yet, install grunt globally using `npm install grunt -g`, and build by simply 
 running `grunt` from the project root folder.
 
+Optimising stage route data
+===========================
+
+Route data for each stage has been supplied in kml files. KML is pretty verbose, and we are really
+only intereted in the geo data for each of the points on the stages route path. We have a custom
+grunt task which will compile co-ordinate data from each of the stage kml files into a more compact
+json format. To run this task use
+
+`grunt compileKml:all`
+
+You'll only need to run this if the kml files ever change, which is unlikely. See /js/config/stages.js
+for configuration of which json/kml file associates with which stage.
+
 URLS
 ====
 

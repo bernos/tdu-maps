@@ -5,13 +5,15 @@
 define([
 	'views/ViewBase',
 	'views/MapView',
-	'views/ResultFeedView'
-], 
+	'views/ResultFeedView',
+  'views/LiveFeedView'
+],
 
-function(ViewBase, MapView, ResultFeedView) {
+function(ViewBase, MapView, ResultFeedView, LiveFeedView) {
 	return {
-		ViewBase : ViewBase,
-		MapView : MapView,
-		ResultFeedView : ResultFeedView
-	}
+		ViewBase        : ViewBase,
+		MapView         : MapView,
+		ResultFeedView  : ResultFeedView,
+    LiveFeedView    : LiveFeedView
+	};
 });

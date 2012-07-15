@@ -3,7 +3,7 @@
  * The main view for presenting our google map to users
  */
 
-define(["gmaps", "backbone", "underscore"], 
+define(["gmaps", "backbone", "underscore"],
 
 function(gmaps, Backbone, _) {
 	return Backbone.View.extend({
@@ -14,6 +14,8 @@ function(gmaps, Backbone, _) {
 		initialize: function(options) {
 			if (options.stageCollection) {
 				options.stageCollection.bind("reset", this.onStagesLoaded, this);
+
+				this.onStagesLoaded(options.stageCollection);
 			}
 		},
 
@@ -23,7 +25,7 @@ function(gmaps, Backbone, _) {
 		 * @param {StageModel} stage - The stage that is being added
 		 */
 		addStage: function(stage) {
-			stage.bind("kml:loaded", this.onStageKmlLoaded, this);
+			stage.bind("route:loaded", this.onStageRouteLoaded, this);
 			return this;
 		},
 
@@ -35,7 +37,7 @@ function(gmaps, Backbone, _) {
 
 			_.each(collection.models, function(stage) {
 				mapView.addStage(stage);
-			    stage.loadKml();
+				stage.loadRoute();
 			});
 		},
 
@@ -45,22 +47,21 @@ function(gmaps, Backbone, _) {
 		 *
 		 * @param {StageModel} stage - The StageModel whos KML loaded
 		 */
-		onStageKmlLoaded: function(stage) {
-			console.log("kml loaded", arguments)
-			var polyLine = stage.get('routePolyLine')
+		onStageRouteLoaded: function(stage) {
+			var polyLine = stage.get('routePolyLine');
 			var points   = polyLine.getPath().getArray();
 
-	        var start = new gmaps.Marker({
-	          map : this.googleMap,
-	          position : points[0],
-	        });
+			var start = new gmaps.Marker({
+				map : this.googleMap,
+				position : points[0]
+			});
 
-	        var finish = new gmaps.Marker({
-	          map : this.googleMap,
-	          position : points[points.length - 1]
-	        });
+			var finish = new gmaps.Marker({
+				map : this.googleMap,
+				position : points[points.length - 1]
+			});
 
-	        polyLine.setMap(this.googleMap);
+			polyLine.setMap(this.googleMap);
 		},
 
 		/**
@@ -71,4 +72,4 @@ function(gmaps, Backbone, _) {
 			return this;
 		}
 	});
-})
+});

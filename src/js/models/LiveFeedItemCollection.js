@@ -2,7 +2,7 @@
  * models/LiveFeedItemCollection.js
  * A collection class representing a live feed
  */
-define(["config", "underscore", "backbone"], 
+define(["config/config", "underscore", "backbone"], 
 
 function(config, _, Backbone) {
 	return Backbone.Collection.extend({
