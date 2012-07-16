@@ -14,6 +14,26 @@ module.exports = function(grunt) {
         kmlPath : 'src/kml'
       }
     },
+
+    fetchElevationData : {
+      all: {
+        src : 'src/js/config/stage-*.json',
+        dest : 'src/js/config',
+        pointsPerRequest : 50, // number of path points to include in each request to google
+        sampleDistance : 0.25, // distance between elevation samples in km
+        maxSamples : 200 // if this is set it will override the sample distance
+      }
+    },
+
+    elevationImages : {
+      all : {
+        src : 'src/js/config/elevation-stage-*.json',
+        dest : 'src/js/config',
+        chartOptions : {
+
+        }
+      }
+    },
     
     requirejs: {
       baseUrl: "src/js",
