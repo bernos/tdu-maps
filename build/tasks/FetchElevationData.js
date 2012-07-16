@@ -7,6 +7,18 @@
  * 
  * This task will output elevation data into a single json file per input file. Output files
  * are saved in the configured output directory, and are named "elevation-<input_filename>.json"
+ *
+ * This process is a little tricky due to url lenght limitations when calling the google 
+ * elevation api. To get around this we split the array of points for each stage route down
+ * to multiple "sub paths" and fetch the elevation data for each, then join it all together
+ * before writing it back to disk.
+ *
+ * Options for this task
+ * pointsPerRequest: The number of points to include in each request to the google elevation
+ *		api. Allows some level of control over the length of each request URL
+ * sampleDistance: Distance between elevation sample points along our path.
+ * maxSamples: Maximum number of elevation sample points. If this option is specified it will
+ *		override the sampleDistance option
  */
 module.exports = function(grunt) {
 
@@ -93,6 +105,12 @@ module.exports = function(grunt) {
 		return subPaths;
 	}
 
+
+	/**
+	 * Recursively processes list of request queue items. Each item
+	 * corresponds to one one of our input files, and has properties
+	 * containing the output filename and an array of request urls
+	 */
 	function processRequestQueue(requestQueue, callback) {
 		processRequestQueueItem(requestQueue.shift(), function() {
 			if (requestQueue.length) {
@@ -103,6 +121,10 @@ module.exports = function(grunt) {
 		});
 	}
 
+	/**
+	 * Recursively execute each of the requests in a request que item
+	 * and write the response to the corresponding output file
+	 */ 
 	function processRequestQueueItem(requestQueueItem, callback) {
 		processRequests(requestQueueItem.requests, function(responses) {
 			// write results to file
@@ -122,7 +144,10 @@ module.exports = function(grunt) {
 		});
 	}
 
-
+	/**
+	 * Request each url in an array of request objects, and buffer
+	 * the responses
+	 */
 	function processRequests(requests, callback, buf) {
 		var r = requests.shift();
 		
@@ -139,9 +164,11 @@ module.exports = function(grunt) {
 				callback(buf);
 			}
 		});
-
 	}
 
+	/**
+	 * Actually perform an http request
+	 */
 	function doRequest(options, callback) {
 		grunt.log.writeln("requesting http://" + options.host + options.path);
 		http.request(options, function(response) {
