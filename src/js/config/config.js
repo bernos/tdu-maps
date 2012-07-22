@@ -6,6 +6,21 @@
 define(["gmaps"], function(gmaps) {
 
   /**
+   * Our application routes
+   */
+  var routes = {
+    "stages/:stage/live-feed" : "live-feed",
+    "stages/:stage/map"       : "map",
+    "stages/:stage/profile"   : "profile",
+    "stages/:stage/results"   : "results",
+    "stages/:stage"           : "stage",
+    "stages"                  : "stages",
+    "standings"               : "standings",
+    "standings/:jersyId"      : "standings",
+    ""                        : "home"
+  };
+
+  /**
    * Stage names. Retrieve stage names from here ALWAYS. Names can change and we
    * don't want to have to make a hundred copy updates every time they do.
    */
@@ -83,9 +98,54 @@ define(["gmaps"], function(gmaps) {
     liveFeeds   : liveFeeds,
     kmlPath     : '/kml',
     useStageKml : false,
+    routes      : routes,
 
     resultFeeds : {
+      /**
+       * The URL pattern used by all ResultFeedItemCollection instances
+       * to load data
+       */
       url : "/api/results/<%= stageId %>/<%= jerseyId %>.json",
+
+      /**
+       * StageResults model configuration for overall standings
+       */
+      standings : {
+        name : "General classification",
+        stageId : 0,
+        feeds : [
+          {            
+            name : "Jayco sprint",
+            jerseyId : "SPR",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Cycle Instead Young Rider",
+            jerseyId : "YNG",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "SA Brilliant Blend Winning Team",
+            jerseyId : "LDT",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Santos Ochre Leader's Jersey (General Classification)",
+            jerseyId : "SAN",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Skoda King of the Mountain",
+            jerseyId : "KOM",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Hindmarsh Most Aggressive Rider",
+            jerseyId : "MAR",
+            jerseyImage : "asdf"
+          }
+        ]
+      },
 
       stages : [
         {

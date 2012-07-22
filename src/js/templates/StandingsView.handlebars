@@ -1,0 +1,27 @@
+<h2>Standings</h2>
+
+<ul>
+  {{#each feeds}}
+  <li>
+    <a href="#/standings/{{this.jerseyId}}">{{this.name}}</a>  
+  </li>
+  {{/each}}
+</ul>
+
+{{#if selectedFeed}}
+  <h3>{{selectedFeed.jerseyImage}} {{selectedFeed.name}}</h3>
+
+  {{#if loading}}
+    <div>Loading...</div>
+  {{/if}}
+
+  {{#if selectedFeed.items}}
+    <ol>
+      {{#each selectedFeed.items}}
+        <li>
+           {{this.Number}} {{this.Name}} {{this.Time}} {{this.Team}}
+        </li>
+      {{/each}}
+    </ol>
+  {{/if}}
+{{/if}}

@@ -50,16 +50,27 @@ require([
   "jquery",
   "domready",
   "underscore",
+  "backbone",
   "config/config",
   "models/models",
   "views/views",
   "config/stages"
 ],
 
-function($, domready, _, config, models, views, stages) {
+function($, domready, _, Backbone, config, models, views, stages) {
+  
   var stageCollection;
   var liveFeedCollection;
-  var mapView;
+  var standingsModel;
+
+
+ 
+  var viewStack;
+
+  
+  var router;
+
+  
 
   /**
    * Initialize the app. This is the main entry point. Gets called once the dom has
@@ -68,8 +79,10 @@ function($, domready, _, config, models, views, stages) {
   function init() {
     initModel();
     initView();
+    initRouter();
 
-  //  stageCollection.fetch();
+    //showPage(stagesPage);
+    Backbone.history.start();
   }
 
   /**
@@ -78,7 +91,11 @@ function($, domready, _, config, models, views, stages) {
   function initModel() {
     stageCollection = new models.StageCollection(stages);
 
-    liveFeedCollection = new models.LiveFeedCollection(config.liveFeeds.feeds);
+    standingsModel = new models.StageResults(config.resultFeeds.standings);
+
+    console.log("stages are ", stageCollection);
+
+    //liveFeedCollection = new models.LiveFeedCollection(config.liveFeeds.feeds);
 
 
     // TEMP
@@ -186,6 +203,24 @@ function($, domready, _, config, models, views, stages) {
    * Initialize the view
    */
   function initView() {
+    viewStack = new views.ViewStack({
+      el : "#page",
+      views : {
+        "home"        : new views.HomeView(),
+        "stageDetail" : new views.StageDetailView(),
+        "stagesMenu"  : new views.StagesMenuView({
+          stages : stageCollection
+        }),
+        "standings"   : new views.StandingsView({
+          model : standingsModel
+        })
+      }
+    });
+
+    viewStack.render();
+
+
+    /*
     var mapOptions = {
       stageCollection : stageCollection
     }
@@ -193,6 +228,48 @@ function($, domready, _, config, models, views, stages) {
     mapView = new views.MapView(_.extend(mapOptions, config.mapView));
 
     mapView.render();
+    */
+  }
+
+  function initRouter() {
+    router = new Backbone.Router({
+      routes : config.routes
+    });
+
+    router.on("route:home", function() {
+      console.log("GO HOME");
+      viewStack.setCurrentView("home");
+    });
+
+    router.on("route:stages", function() {
+      console.log("GO TO STAGES");
+      viewStack.setCurrentView("stagesMenu");
+    });
+
+    router.on("route:stage", function(stageId) {
+      console.log("GO TO STAGE ", stageId);
+      var stage = stageCollection.get(stageId);
+      console.log(stage);
+      viewStack.get("stageDetail").setStage(stage);
+      viewStack.setCurrentView("stageDetail");
+    });
+
+    router.on("route:standings", function(jerseyId) {
+      if (!jerseyId) {
+        jerseyId = "SAN";
+      }
+
+      viewStack.get("standings").setJerseyId(jerseyId);
+      viewStack.setCurrentView("standings");
+
+      // Tell the stadingsview which jersey feed to display
+      // 
+      
+    });
+
+    router.bind("all", function() {
+      console.log("route", arguments);
+    });
   }
 
   domready(init);

@@ -2,7 +2,7 @@
  * models/ResultFeed.js
  * Model representing a result feed for a single jersey in a single stage
  */
-define(["backbone", "./ResultFeedItemCollection"], 
+define(["backbone", "./ResultFeedItemCollection"],
 
 function(Backbone, ResultFeedItemCollection) {
 
@@ -10,11 +10,25 @@ function(Backbone, ResultFeedItemCollection) {
 
 		type: "ResultFeed",
 		
-		initialize: function() {			
+		getType : function() {
+			return this.type;
+		},
+
+		load: function() {
+			this.get('items').fetch();
+		},
+
+		initialize: function() {
+			var model = this;
 
 			var items = new ResultFeedItemCollection([], {
 				stageId  : this.get('stageId'),
 				jerseyId : this.get('jerseyId')
+			});
+
+			items.bind("reset", function(collection) {
+				console.log("Results feed loaded", arguments);
+				model.trigger("feed:loaded", model);
 			});
 
 			// Ensure that the stageId property propogates down to each
@@ -28,6 +42,12 @@ function(Backbone, ResultFeedItemCollection) {
 			});
 
 			this.set('items', items);
+		},
+
+		toJSON: function() {
+			var o = Backbone.Model.prototype.toJSON.apply(this, arguments);
+			o.items = o.items.toJSON();
+			return o;
 		}
 	});
 });
