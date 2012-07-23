@@ -27,7 +27,6 @@ function(Backbone, ResultFeedItemCollection) {
 			});
 
 			items.bind("reset", function(collection) {
-				console.log("Results feed loaded", arguments);
 				model.trigger("feed:loaded", model);
 			});
 

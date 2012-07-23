@@ -17,6 +17,7 @@ define(["gmaps"], function(gmaps) {
     "stages"                  : "stages",
     "standings"               : "standings",
     "standings/:jersyId"      : "standings",
+    "teams"                   : "teams",
     ""                        : "home"
   };
 
@@ -48,7 +49,7 @@ define(["gmaps"], function(gmaps) {
   };
 
   /**
-   * Our live feed configurations
+   * Our live feed configurations DEPRECATED
    */
   var liveFeeds = {
     baseUrl : "/api/livefeeds/",

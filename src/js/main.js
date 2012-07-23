@@ -81,7 +81,6 @@ function($, domready, _, Backbone, config, models, views, stages) {
     initView();
     initRouter();
 
-    //showPage(stagesPage);
     Backbone.history.start();
   }
 
@@ -90,8 +89,7 @@ function($, domready, _, Backbone, config, models, views, stages) {
    */
   function initModel() {
     stageCollection = new models.StageCollection(stages);
-
-    standingsModel = new models.StageResults(config.resultFeeds.standings);
+    standingsModel  = new models.StageResults(config.resultFeeds.standings);
 
     console.log("stages are ", stageCollection);
 
@@ -206,9 +204,14 @@ function($, domready, _, Backbone, config, models, views, stages) {
     viewStack = new views.ViewStack({
       el : "#page",
       views : {
-        "home"        : new views.HomeView(),
-        "stageDetail" : new views.StageDetailView(),
-        "stagesMenu"  : new views.StagesMenuView({
+        "home"         : new views.HomeView(),
+        "stageDetail"  : new views.StageDetailView(),
+        "stageFeed"    : new views.StageLiveFeedView(),
+        "stageMap"     : new views.StageMapView(),
+        "stageProfile" : new views.StageProfileView(),
+        "stageResults" : new views.StageResultsView(),
+        "teams"        : new views.TeamsView(),
+        "stagesMenu"   : new views.StagesMenuView({
           stages : stageCollection
         }),
         "standings"   : new views.StandingsView({
@@ -231,6 +234,9 @@ function($, domready, _, Backbone, config, models, views, stages) {
     */
   }
 
+  /**
+   * Initializes the application router
+   */
   function initRouter() {
     router = new Backbone.Router({
       routes : config.routes
@@ -265,6 +271,33 @@ function($, domready, _, Backbone, config, models, views, stages) {
       // Tell the stadingsview which jersey feed to display
       // 
       
+    });
+
+    router.on("route:live-feed", function(stageId) {
+      var stage = stageCollection.get(stageId);
+
+      console.log("the stage is ", stage);
+      viewStack.get("stageFeed").setStage(stage);
+      viewStack.setCurrentView("stageFeed");
+
+      stage.get('liveFeed').load();
+    });
+
+    router.on("route:map", function(stageId) {
+      viewStack.setCurrentView("stageMap");
+    });
+
+    router.on("route:profile", function(stageId) {
+      viewStack.setCurrentView("stageProfile");
+    });
+
+    router.on("route:results", function(stageId) {
+      viewStack.setCurrentView("stageResults");
+    });
+
+    router.on("route:teams", function() {
+      console.log("GOTO TEAMS");
+      viewStack.setCurrentView("teams");
     });
 
     router.bind("all", function() {

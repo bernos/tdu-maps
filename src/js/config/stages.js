@@ -9,7 +9,10 @@ define(function() {
         "strokeColor": "#FF0000",
         "strokeOpacity": 0.7,
         "strokeWeight": 4
-      }
+      },
+      "liveFeed" : {
+        "id" : 3
+      },
     },
     {
       "id" : "stage-1",
@@ -20,6 +23,9 @@ define(function() {
         "strokeColor": "#FFCC00",
         "strokeOpacity": 0.7,
         "strokeWeight": 4
+      },
+      "liveFeed" : {
+        "id" : 4
       }
     },
     {
@@ -31,6 +37,9 @@ define(function() {
         "strokeColor": "#00AA00",
         "strokeOpacity": 0.7,
         "strokeWeight": 4
+      },
+      "liveFeed" : {
+        "id" : 5
       }
     },
     {
@@ -42,6 +51,9 @@ define(function() {
         "strokeColor": "#0000FF",
         "strokeOpacity": 0.7,
         "strokeWeight": 4
+      },
+      "liveFeed" : {
+        "id" : 6
       }
     },
     {
@@ -53,6 +65,9 @@ define(function() {
         "strokeColor": "#00CCFF",
         "strokeOpacity": 0.7,
         "strokeWeight": 4
+      },
+      "liveFeed" : {
+        "id" : 7
       }
     },
     {
@@ -64,6 +79,9 @@ define(function() {
         "strokeColor": "#FF0000",
         "strokeOpacity": 0.7,
         "strokeWeight": 4
+      },
+      "liveFeed" : {
+        "id" : 8
       }
     },
     {
@@ -75,6 +93,9 @@ define(function() {
         "strokeColor": "#FF0000",
         "strokeOpacity": 0.7,
         "strokeWeight": 4
+      },
+      "liveFeed" : {
+        "id" : 7
       }
     }
   ];
