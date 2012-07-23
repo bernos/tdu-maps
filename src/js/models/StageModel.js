@@ -2,9 +2,9 @@
  * models/StageModel.js
  * Model representing a single stage in the tour down under
  */
-define(["config/config", "gmaps", "backbone", "jquery", "helpers/KmlHelper", "underscore", "./LiveFeed"],
+define(["config/config", "gmaps", "backbone", "jquery", "helpers/KmlHelper", "underscore", "./LiveFeed", "./StageResults"],
 
-function(config, gmaps, Backbone, $, KmlHelper, _, LiveFeed) {
+function(config, gmaps, Backbone, $, KmlHelper, _, LiveFeed, StageResults) {
 
   return Backbone.Model.extend({
 
@@ -12,7 +12,7 @@ function(config, gmaps, Backbone, $, KmlHelper, _, LiveFeed) {
       options = options || {};
 
       this.set('liveFeed',  new LiveFeed(options.liveFeed));
-      this.set('resultFeed',  new LiveFeed(options.resultFeed));
+      this.set('results',  new StageResults(options.results));
     },
 
     loadRoute: function() {
@@ -26,6 +26,7 @@ function(config, gmaps, Backbone, $, KmlHelper, _, LiveFeed) {
     toJSON: function() {
       var o = Backbone.Model.prototype.toJSON.apply(this, arguments);
       o.liveFeed = o.liveFeed.toJSON();
+      o.results = o.results.toJSON();
 
       return o;
     },

@@ -5,17 +5,16 @@
 define(["backbone", "./ResultFeedItemCollection"],
 
 function(Backbone, ResultFeedItemCollection) {
-
 	return Backbone.Model.extend({
-
-		type: "ResultFeed",
-		
-		getType : function() {
-			return this.type;
+		load: function() {
+			this.trigger("feed:loading", this);
+			this.get('items').fetch();
 		},
 
-		load: function() {
-			this.get('items').fetch();
+		toJSON: function() {
+			var o = Backbone.Model.prototype.toJSON.apply(this, arguments);
+			o.items = o.items.toJSON();
+			return o;
 		},
 
 		initialize: function() {
@@ -41,12 +40,6 @@ function(Backbone, ResultFeedItemCollection) {
 			});
 
 			this.set('items', items);
-		},
-
-		toJSON: function() {
-			var o = Backbone.Model.prototype.toJSON.apply(this, arguments);
-			o.items = o.items.toJSON();
-			return o;
 		}
 	});
 });

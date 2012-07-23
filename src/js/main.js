@@ -207,7 +207,7 @@ function($, domready, _, Backbone, config, models, views, stages) {
         "home"         : new views.HomeView(),
         "stageDetail"  : new views.StageDetailView(),
         "stageFeed"    : new views.StageLiveFeedView(),
-        "stageMap"     : new views.StageMapView(),
+        "stageMap"     : new views.StageMapView(config.mapView),
         "stageProfile" : new views.StageProfileView(),
         "stageResults" : new views.StageResultsView(),
         "teams"        : new views.TeamsView(),
@@ -284,15 +284,41 @@ function($, domready, _, Backbone, config, models, views, stages) {
     });
 
     router.on("route:map", function(stageId) {
+      var stage = stageCollection.get(stageId);
+      var view = viewStack.get("stageMap");
+
+      view.setStage(stage);
       viewStack.setCurrentView("stageMap");
+
+      stage.loadRoute();
     });
 
     router.on("route:profile", function(stageId) {
+      var stage = stageCollection.get(stageId);
+
       viewStack.setCurrentView("stageProfile");
     });
 
-    router.on("route:results", function(stageId) {
+    router.on("route:results", function(stageId, jerseyId) {
+      var view  = viewStack.get("stageResults");
+      var stage = stageCollection.get(stageId);
+
+      console.log("stage is ", stage);
+
+      if (!jerseyId) {
+        jerseyId = stage.get('results').get('defaultJerseyId');
+      }
+
+      view.setStage(stage);
+
+      if (stage) {
+        var resultFeed = stage.get('results').getFeedByJerseyId(jerseyId);
+        view.setResultFeed(resultFeed);
+      }
+
       viewStack.setCurrentView("stageResults");
+
+      resultFeed.load();
     });
 
     router.on("route:teams", function() {

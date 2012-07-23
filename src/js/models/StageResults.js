@@ -7,7 +7,6 @@ define(["underscore", "backbone", "./ResultFeedCollection"],
 
 function(_, Backbone, ResultFeedCollection) {
 	return Backbone.Model.extend({
-		type: "StageResult",
 
 		initialize : function() {
 			var model = this;
@@ -17,11 +16,8 @@ function(_, Backbone, ResultFeedCollection) {
 			});
 
 			feeds.bind("feed:loaded", function(feed) {
-				console.log("StageResults heard a feed finish loading", feed);
 				model.trigger("feed:loaded", feed);
 			});
-
-
 			
 			// Ensure that the stageId property propogates down to each
 			// result feed model when changed
@@ -30,6 +26,12 @@ function(_, Backbone, ResultFeedCollection) {
 			});
 
 			this.set('feeds', feeds);
+		},
+
+		toJSON : function() {
+			var o = Backbone.Model.prototype.toJSON.apply(this, arguments);
+			o.feeds = o.feeds.toJSON();
+			return o;
 		},
 
 		getFeedByJerseyId : function(jerseyId) {

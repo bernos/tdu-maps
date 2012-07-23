@@ -1,1 +1,18 @@
-Stage results here
+<h2>{{stage.name}}</h2>
+<h3>Results</h3>
+<ul>
+	{{#each stage.results.feeds}}
+		<li><a href="#/stages/{{../stage.id}}/results/{{this.jerseyId}}">{{this.name}}</a></li>
+	{{/each}}
+</ul>
+
+{{#if resultFeed.items.length}}
+  <h4>{{resultFeed.name}}</h4>
+	<ol>
+    {{#each resultFeed.items}}
+      <li>
+         {{this.Number}} {{this.Name}} {{this.Time}} {{this.Team}}
+      </li>
+    {{/each}}
+  </ol>
+{{/if}}

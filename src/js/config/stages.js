@@ -13,6 +13,37 @@ define(function() {
       "liveFeed" : {
         "id" : 3
       },
+      results : {
+        stageId : 'C',
+        defaultJerseyId : 'CLA',
+        feeds : [
+          {
+            name : "Classic Overall",
+            jerseyId : "CLA",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Classic Prime 1",
+            jerseyId : "PR1",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Classic Prime 2",
+            jerseyId : "PR2",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Classic Prime 3",
+            jerseyId : "PR3",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Classic Prime 4",
+            jerseyId : "PR4",
+            jerseyImage : "asdf"
+          }
+        ]
+      }
     },
     {
       "id" : "stage-1",
@@ -26,6 +57,47 @@ define(function() {
       },
       "liveFeed" : {
         "id" : 4
+      },
+      results : {
+        defaultJerseyId : 'STG',
+        stageId : 1,
+        feeds : [
+          {
+            name : "Santos Ochre Leader's Jersey",
+            jerseyId : "SAN",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Skoda King of the Mountain",
+            jerseyId : "KOM",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Jayco Sprint",
+            jerseyId : "SPR",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Cycle Instead Young Rider",
+            jerseyId : "YNG",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Hindmarsh Most Aggressive Rider",
+            jerseyId : "MAR",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "SA Brilliant Blend Winning Team",
+            jerseyId : "LDT",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Stage Winner",
+            jerseyId : "STG",
+            jerseyImage : "asdf"
+          }
+        ]
       }
     },
     {
@@ -40,6 +112,47 @@ define(function() {
       },
       "liveFeed" : {
         "id" : 5
+      },
+      results : {
+        defaultJerseyId : 'STG',
+        stageId : 2,
+        feeds : [
+          {
+            name : "Santos Ochre Leader's Jersey",
+            jerseyId : "SAN",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Skoda King of the Mountain",
+            jerseyId : "KOM",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Jayco Sprint",
+            jerseyId : "SPR",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Cycle Instead Young Rider",
+            jerseyId : "YNG",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Hindmarsh Most Aggressive Rider",
+            jerseyId : "MAR",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "SA Brilliant Blend Winning Team",
+            jerseyId : "LDT",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Stage Winner",
+            jerseyId : "STG",
+            jerseyImage : "asdf"
+          }
+        ]
       }
     },
     {
@@ -54,6 +167,47 @@ define(function() {
       },
       "liveFeed" : {
         "id" : 6
+      },
+      results : {
+        defaultJerseyId : 'STG',
+        stageId : 3,
+        feeds : [
+          {
+            name : "Santos Ochre Leader's Jersey",
+            jerseyId : "SAN",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Skoda King of the Mountain",
+            jerseyId : "KOM",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Jayco Sprint",
+            jerseyId : "SPR",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Cycle Instead Young Rider",
+            jerseyId : "YNG",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Hindmarsh Most Aggressive Rider",
+            jerseyId : "MAR",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "SA Brilliant Blend Winning Team",
+            jerseyId : "LDT",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Stage Winner",
+            jerseyId : "STG",
+            jerseyImage : "asdf"
+          }
+        ]
       }
     },
     {
@@ -68,6 +222,47 @@ define(function() {
       },
       "liveFeed" : {
         "id" : 7
+      },
+      results : {
+        defaultJerseyId : 'STG',
+        stageId : 4,
+        feeds : [
+          {
+            name : "Santos Ochre Leader's Jersey",
+            jerseyId : "SAN",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Skoda King of the Mountain",
+            jerseyId : "KOM",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Jayco Sprint",
+            jerseyId : "SPR",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Cycle Instead Young Rider",
+            jerseyId : "YNG",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Hindmarsh Most Aggressive Rider",
+            jerseyId : "MAR",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "SA Brilliant Blend Winning Team",
+            jerseyId : "LDT",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Stage Winner",
+            jerseyId : "STG",
+            jerseyImage : "asdf"
+          }
+        ]
       }
     },
     {
@@ -82,6 +277,47 @@ define(function() {
       },
       "liveFeed" : {
         "id" : 8
+      },
+      results : {
+        defaultJerseyId : 'STG',
+        stageId : 5,
+        feeds : [
+          {
+            name : "Santos Ochre Leader's Jersey",
+            jerseyId : "SAN",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Skoda King of the Mountain",
+            jerseyId : "KOM",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Jayco Sprint",
+            jerseyId : "SPR",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Cycle Instead Young Rider",
+            jerseyId : "YNG",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Hindmarsh Most Aggressive Rider",
+            jerseyId : "MAR",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "SA Brilliant Blend Winning Team",
+            jerseyId : "LDT",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Stage Winner",
+            jerseyId : "STG",
+            jerseyImage : "asdf"
+          }
+        ]
       }
     },
     {
@@ -95,7 +331,53 @@ define(function() {
         "strokeWeight": 4
       },
       "liveFeed" : {
-        "id" : 7
+        "id" : 9
+      },
+      results : {
+        defaultJerseyId : 'STG',
+        stageId : 6,
+        feeds : [
+          {
+            name : "Santos Ochre Leader's Jersey",
+            jerseyId : "SAN",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Skoda King of the Mountain",
+            jerseyId : "KOM",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Jayco Sprint",
+            jerseyId : "SPR",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Cycle Instead Young Rider",
+            jerseyId : "YNG",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Hindmarsh Most Aggressive Rider",
+            jerseyId : "MAR",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "SA Brilliant Blend Winning Team",
+            jerseyId : "LDT",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Stage Winner",
+            jerseyId : "STG",
+            jerseyImage : "asdf"
+          },
+          {
+            name : "Tanya Dever Award",
+            jerseyId : "TDA",
+            jerseyImage : "asdf"
+          }
+        ]
       }
     }
   ];

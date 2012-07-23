@@ -28,15 +28,14 @@ define(['backbone'], function(Backbone) {
         this._currentView.remove();
       }
 
-
-
       this._currentView = this.get(name);
-
-      console.log(this._currentView)
 
       if (this._currentView) {
         this._currentView.render();
         this.$el.append(this._currentView.$el);
+        if (this._currentView.afterRender) {
+          this._currentView.afterRender();
+        }
       }
 
       return this;

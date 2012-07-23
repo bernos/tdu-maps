@@ -13,10 +13,11 @@ define(["gmaps"], function(gmaps) {
     "stages/:stage/map"       : "map",
     "stages/:stage/profile"   : "profile",
     "stages/:stage/results"   : "results",
+    "stages/:stage/results/:jerseyId" : "results",
     "stages/:stage"           : "stage",
     "stages"                  : "stages",
     "standings"               : "standings",
-    "standings/:jersyId"      : "standings",
+    "standings/:jerseyId"      : "standings",
     "teams"                   : "teams",
     ""                        : "home"
   };
@@ -40,7 +41,7 @@ define(["gmaps"], function(gmaps) {
    * be added to the googleMapsOptions object here.
    */
   var mapView = {
-    el : '#map_canvas',
+    //el : '#map_canvas',
     googleMapsOptions : {
       center: new gmaps.LatLng(-34.78928170189535, 138.74443334960938),
       zoom: 9,
