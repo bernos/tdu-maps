@@ -11,10 +11,6 @@
 {{#if selectedFeed}}
   <h3>{{selectedFeed.jerseyImage}} {{selectedFeed.name}}</h3>
 
-  {{#if loading}}
-    <div>Loading...</div>
-  {{/if}}
-
   {{#if selectedFeed.items}}
     <ol>
       {{#each selectedFeed.items}}

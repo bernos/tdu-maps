@@ -60,26 +60,21 @@ require([
 function($, domready, _, Backbone, config, models, views, stages) {
   
   var stageCollection;
-  var liveFeedCollection;
   var standingsModel;
 
-
- 
+  var mainMenuView;
   var viewStack;
-
   
   var router;
-
-  
 
   /**
    * Initialize the app. This is the main entry point. Gets called once the dom has
    * loaded
    */
   function init() {
-    initModel();
-    initView();
     initRouter();
+    initModel();
+    initView();    
 
     Backbone.history.start();
   }
@@ -90,117 +85,17 @@ function($, domready, _, Backbone, config, models, views, stages) {
   function initModel() {
     stageCollection = new models.StageCollection(stages);
     standingsModel  = new models.StageResults(config.resultFeeds.standings);
-
-    console.log("stages are ", stageCollection);
-
-    //liveFeedCollection = new models.LiveFeedCollection(config.liveFeeds.feeds);
-
-
-    // TEMP
-    /*
-    var liveFeedModel = new models.LiveFeed({
-      id : 3
-    });
-
-    var liveFeedView = new views.LiveFeedView({
-      el : "#map_canvas",
-      model : liveFeedModel
-    });
-
-    liveFeedModel.get('items').fetch();
-    // */
-    // END TEMP
-
-    // TEMP
-    /*
-    var resultFeedModel = new models.ResultFeed({
-      stageId : 0,
-      jerseyId : 'SPR',
-      name : "Jersey name here",
-      jerseyIcon : "http://tourdownunder.com.au/images/results/jersey-images-29Px/santos-ochre-leaders-jersey.jpg"
-    });
-
-
-    // TEMP
-    var resultFeedView = new views.ResultFeedView({
-      el : "#map_canvas",
-      model : resultFeedModel
-    });
-
-    resultFeedModel.get('items').fetch();
-    // */
-
-
-
-
-    // TEMP    
-    /*
-    _.each(liveFeedCollection.models, function(model) {
-
-      model.get('items').bind("reset", function() {
-        console.log("loaded feed", arguments);
-      })
-
-      model.get('items').fetch();
-    });
-    // */
-    // END TEMP
-
-    // TEMP
-    /*
-    var resultFeed = new models.ResultFeed({
-      name : "Some jersey name",
-      jerseyId : "SPR",
-      jerseyIcon : "aasdfababa"
-    });
-
-    resultFeed.set("stageId", 0);
-
-    resultFeed.get('items').bind("reset", function() {
-      console.log("got result feed", arguments)
-    });
-
-    resultFeed.get('items').fetch();
-    // */
-    // END TEMP
-
-    /*
-    // TEMP
-    var stageResults = new models.StageResults({
-      stageId : 0,
-      name : "General classification",
-      feeds : [
-        {
-          name : "Some jersey name",
-          jerseyId : "SPR",
-          jerseyIcon : "aasdfababa"
-        },
-        {
-          name : "Some jersey name",
-          jerseyId : "ABC",
-          jerseyIcon : "aasdfababa"
-        }
-      ]
-    });
-
-    _.each(stageResults.get('feeds').models, function(resultFeed) {
-
-      console.log("resultFeed", resultFeed)
-
-      resultFeed.get('items').bind('reset', function() {
-        console.log("loaded results", arguments);
-      });
-      resultFeed.get('items').fetch();
-    });
-
-    // */
-    // END TEMP
   }
 
   /**
    * Initialize the view
    */
   function initView() {
+    mainMenuView = new views.MainMenuView({
+      el : "#main-menu",
+      router: router
+    });
+
     viewStack = new views.ViewStack({
       el : "#page",
       views : {
@@ -220,18 +115,9 @@ function($, domready, _, Backbone, config, models, views, stages) {
       }
     });
 
-    viewStack.render();
-
-
-    /*
-    var mapOptions = {
-      stageCollection : stageCollection
-    }
-
-    mapView = new views.MapView(_.extend(mapOptions, config.mapView));
-
-    mapView.render();
-    */
+    $('#menu-btn').click(function() {
+      mainMenuView.toggle();
+    });
   }
 
   /**
@@ -243,19 +129,16 @@ function($, domready, _, Backbone, config, models, views, stages) {
     });
 
     router.on("route:home", function() {
-      console.log("GO HOME");
       viewStack.setCurrentView("home");
     });
 
     router.on("route:stages", function() {
-      console.log("GO TO STAGES");
       viewStack.setCurrentView("stagesMenu");
     });
 
     router.on("route:stage", function(stageId) {
-      console.log("GO TO STAGE ", stageId);
       var stage = stageCollection.get(stageId);
-      console.log(stage);
+
       viewStack.get("stageDetail").setStage(stage);
       viewStack.setCurrentView("stageDetail");
     });
@@ -265,18 +148,17 @@ function($, domready, _, Backbone, config, models, views, stages) {
         jerseyId = "SAN";
       }
 
-      viewStack.get("standings").setJerseyId(jerseyId);
+      var feed = standingsModel.getFeedByJerseyId(jerseyId);
+
+      viewStack.get("standings").setFeed(feed);
       viewStack.setCurrentView("standings");
 
-      // Tell the stadingsview which jersey feed to display
-      // 
-      
+      feed.load();
     });
 
     router.on("route:live-feed", function(stageId) {
       var stage = stageCollection.get(stageId);
 
-      console.log("the stage is ", stage);
       viewStack.get("stageFeed").setStage(stage);
       viewStack.setCurrentView("stageFeed");
 
@@ -303,31 +185,22 @@ function($, domready, _, Backbone, config, models, views, stages) {
       var view  = viewStack.get("stageResults");
       var stage = stageCollection.get(stageId);
 
-      console.log("stage is ", stage);
-
       if (!jerseyId) {
         jerseyId = stage.get('results').get('defaultJerseyId');
       }
 
       view.setStage(stage);
 
-      if (stage) {
-        var resultFeed = stage.get('results').getFeedByJerseyId(jerseyId);
-        view.setResultFeed(resultFeed);
-      }
-
+      var resultFeed = stage.get('results').getFeedByJerseyId(jerseyId);
+      view.setResultFeed(resultFeed);
+      
       viewStack.setCurrentView("stageResults");
 
       resultFeed.load();
     });
 
     router.on("route:teams", function() {
-      console.log("GOTO TEAMS");
       viewStack.setCurrentView("teams");
-    });
-
-    router.bind("all", function() {
-      console.log("route", arguments);
     });
   }
 

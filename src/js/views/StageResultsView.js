@@ -13,22 +13,25 @@ function(handlebars, template, ViewBase) {
       options = options || {};
     },
 
-    onFeedLoaded: function(feed) {
-      console.log("view heard feed load");
+    onResultFeedLoaded: function(feed) {
+      if (feed == this._resultFeed) {
+        this.render();
+      }
+    },
+
+    setStage : function(stage) {
+      if (this._stage) {
+        this._stage.get("results").unbind("feed:loaded", this.onResultFeedLoaded, this);
+      }
+
+      this._stage = stage;
+      this._stage.get("results").bind("feed:loaded", this.onResultFeedLoaded, this);
+
       this.render();
     },
 
     setResultFeed : function(resultFeed) {
-      if (this._resultFeed) {
-        this._resultFeed.unbind("feed:loaded", this.onFeedLoaded, this);
-      }
       this._resultFeed = resultFeed;
-      this._resultFeed.bind("feed:loaded", this.onFeedLoaded, this);
-      this.render();
-    },
-
-    setStage : function(stage) {
-      this._stage = stage;
       this.render();
     },
 
@@ -43,7 +46,6 @@ function(handlebars, template, ViewBase) {
         context.stage = this._stage.toJSON();
       }
 
-      console.log("context is ", context);
       return context;
     }
   });

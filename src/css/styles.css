@@ -17,9 +17,12 @@ body {
   top:0;
   left:0;
   width: 100%;
-  height:100%;
-  margin-left: 165px;
+  height:100%;  
   /*overflow: auto;*/
+}
+
+body.menu-expanded #content {
+  margin-left: 165px;
 }
 
 #header {
