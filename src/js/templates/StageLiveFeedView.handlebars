@@ -1,0 +1,10 @@
+<h2>{{name}}</h2>
+<h3>Live feed</h3>
+
+{{#if liveFeed.items.length}}
+	<ul>
+	{{#each liveFeed.items}}	
+		<li>{{{this.Text}}</li>	
+	{{/each}}
+	</ul>
+{{/if}}

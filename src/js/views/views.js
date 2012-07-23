@@ -10,7 +10,12 @@ define([
   'views/LiveFeedView',
   'views/StageDetailView',
   'views/StagesMenuView',
+  'views/StageLiveFeedView',
+  'views/StageMapView',
+  'views/StageProfileView',
+  'views/StageResultsView',
   'views/StandingsView',
+  'views/TeamsView',
   'views/ViewStack'
 ],
 
@@ -22,18 +27,28 @@ function(
 	LiveFeedView,
 	StageDetailView,
 	StagesMenuView,
+	StageLiveFeedView,
+	StageMapView,
+	StageProfileView,
+	StageResultsView,
 	StandingsView,
+	TeamsView,
 	ViewStack
 ) {
 	return {
-		ViewBase        : ViewBase,
-		HomeView        : HomeView,
-		MapView         : MapView,
-		ResultFeedView  : ResultFeedView,
-    LiveFeedView    : LiveFeedView,
-    StageDetailView : StageDetailView,
-    StagesMenuView  : StagesMenuView,
-    StandingsView   : StandingsView,
-    ViewStack       : ViewStack
+		ViewBase       	 	: ViewBase,
+		HomeView        	: HomeView,
+		MapView         	: MapView,
+		ResultFeedView  	: ResultFeedView,
+    LiveFeedView    	: LiveFeedView,
+    StageDetailView 	: StageDetailView,
+    StagesMenuView  	: StagesMenuView,
+    StageLiveFeedView : StageLiveFeedView,
+    StageMapView 			: StageMapView,
+    StageProfileView 	: StageProfileView,
+    StageResultsView 	: StageResultsView,
+    StandingsView   	: StandingsView,
+    TeamsView 				: TeamsView,
+    ViewStack       	: ViewStack
 	};
 });
