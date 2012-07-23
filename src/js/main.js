@@ -115,8 +115,9 @@ function($, domready, _, Backbone, config, models, views, stages) {
       }
     });
 
-    $('#menu-btn').click(function() {
+    $('#menu-btn').click(function(e) {
       mainMenuView.toggle();
+      e.preventDefault();
     });
   }
 

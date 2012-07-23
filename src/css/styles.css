@@ -8,7 +8,24 @@ body {
 }
 
 #main-menu {
- 
+  width: 165px;
+}
+
+#main-menu .option {
+  border-bottom: 1px solid;
+  padding: 0 5px;
+}
+
+#main-menu li.active .option {
+  border-bottom: none;
+}
+
+#main-menu a {
+  padding: 0 15px;
+}
+
+#main-menu li {
+  line-height: 48px;
 }
 
 #content {
