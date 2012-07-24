@@ -63,6 +63,13 @@ function(gmaps, _, handlebars, template, ViewBase) {
       return this;
     },
 
+    templateContext: function() {
+      if (this._stage) {
+        return this._stage.toJSON();
+      }
+      return {};
+    },
+
     /**
      * Set up the google map. We do this after render, as the view will 
      * be in the dom now

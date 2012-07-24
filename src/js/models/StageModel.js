@@ -41,7 +41,7 @@ function(config, gmaps, Backbone, $, KmlHelper, _, LiveFeed, StageResults) {
       var model = this;
 
       if (this.get('json')) {
-        $.getJSON('/js/config/' + this.get('json'), function(data) {
+        $.getJSON('js/config/' + this.get('json'), function(data) {
           var path = [];
           var polylineOptions = model.get("polylineOptions");
 

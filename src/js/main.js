@@ -178,6 +178,9 @@ function($, domready, _, Backbone, config, models, views, stages) {
 
     router.on("route:profile", function(stageId) {
       var stage = stageCollection.get(stageId);
+      var view = viewStack.get("stageProfile");
+
+      view.setStage(stage);
 
       viewStack.setCurrentView("stageProfile");
     });

@@ -19,7 +19,19 @@ function(handlebars, template, ViewBase) {
 
     templateContext: function() {
       var context = ViewBase.prototype.templateContext.apply(this, arguments);
+      var stageId = this.model.get('id');
+
+      context.links = [
+        { url: "#/stages/" + stageId + "/live-feed", label: "Live feed" },
+        { url: "#/stages/" + stageId + "/map", label: "Map" },
+        { url: "#/stages/" + stageId + "/profile", label: "Profile" },
+        { url: "#/stages/" + stageId + "/results", label: "Results" }
+      ];
+
       return context;
     }
   });
 });
+
+
+  

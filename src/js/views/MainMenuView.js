@@ -4,6 +4,14 @@ define(['jquery', './ViewBase'], function($, ViewBase) {
       options.router.bind("all", this.onRouteChanged, this);
     },
 
+    events : {
+      'click li a' : 'onOptionClick'
+    },
+
+    onOptionClick : function(e) {
+      this.close();
+    },
+
     setActiveLink : function(link) {
       this.$('li.active').removeClass('active');
       this.$('i.icon-white').removeClass('icon-white');

@@ -1,10 +1,11 @@
 define([
   "handlebars",
   "text!templates/StagesMenuView.handlebars",
-  "./ViewBase"
+  "./ViewBase",
+  "underscore"
 ], 
 
-function(handlebars, template, ViewBase) {
+function(handlebars, template, ViewBase, _) {
   return ViewBase.extend({
 
     template : Handlebars.compile(template),
@@ -18,9 +19,12 @@ function(handlebars, template, ViewBase) {
     templateContext: function() {
       var context = ViewBase.prototype.templateContext.apply(this, arguments);
 
-      context.stages = this.stages.toJSON();
-
-      console.log(context)
+      context.stageItemList = _.map(this.stages.models, function(stage) {
+        return {
+          url : "#/stages/" + stage.get('id'),
+          label : stage.get('name')
+        };
+      });
 
       return context;
     }

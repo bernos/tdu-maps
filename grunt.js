@@ -7,6 +7,18 @@ module.exports = function(grunt) {
       all: ['grunt.js', 'src/js/models/*.js']
     },
 
+    less: {
+      all: {
+        options : {
+          paths : ['src/less']
+        },
+
+        files: {
+          "src/css/all.css" : "src/less/all.less"
+        }
+      }
+    },
+
     compileKml: {
       all: {
         src : 'src/js/config/stages.js',
@@ -157,6 +169,7 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-requirejs');
+  grunt.loadNpmTasks('grunt-contrib');
   grunt.loadTasks('build/tasks');
 
   // Default task.

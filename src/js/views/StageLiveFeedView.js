@@ -29,7 +29,6 @@ function(handlebars, template, ViewBase) {
 
     templateContext: function() {
       var context = ViewBase.prototype.templateContext.apply(this, arguments);
-      console.log("the context is ", context);
       return context;
     }
   });

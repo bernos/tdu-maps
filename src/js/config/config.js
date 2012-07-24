@@ -53,7 +53,7 @@ define(["gmaps"], function(gmaps) {
    * Our live feed configurations DEPRECATED
    */
   var liveFeeds = {
-    baseUrl : "/api/livefeeds/",
+    baseUrl : "api/livefeeds/",
     pageSize : 10,
     feeds : [
       {
@@ -107,7 +107,7 @@ define(["gmaps"], function(gmaps) {
        * The URL pattern used by all ResultFeedItemCollection instances
        * to load data
        */
-      url : "/api/results/<%= stageId %>/<%= jerseyId %>.json",
+      url : "api/results/<%= stageId %>/<%= jerseyId %>.json",
 
       /**
        * StageResults model configuration for overall standings

@@ -3,6 +3,7 @@
  * Module for aggregating all our views
  */
 define([
+	'views/HandlebarsHelpers',
 	'views/ViewBase',
 	'views/HomeView',
 	'views/MapView',
@@ -21,6 +22,7 @@ define([
 ],
 
 function(
+	HandlebarsHelpers,
 	ViewBase,
 	HomeView,
 	MapView,

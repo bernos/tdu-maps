@@ -15,10 +15,12 @@ function(handlebars, template, ViewBase) {
 
     setStage : function(stage) {
       this.model = stage;
+      this.render();
     },
 
     templateContext: function() {
       var context = ViewBase.prototype.templateContext.apply(this, arguments);
+      console.log("context is", context)
       return context;
     }
   });
