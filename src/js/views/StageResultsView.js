@@ -1,13 +1,16 @@
 define([
   "handlebars",
   "text!templates/StageResultsView.handlebars",
+  "text!templates/ResultsListView.handlebars",
   "./ViewBase"
 ], 
 
-function(handlebars, template, ViewBase) {
+function(handlebars, template, listTemplate, ViewBase) {
   return ViewBase.extend({
 
     template : Handlebars.compile(template),
+
+    listTemplate : Handlebars.compile(listTemplate),
 
     initialize : function(options) {
       options = options || {};
@@ -15,7 +18,10 @@ function(handlebars, template, ViewBase) {
 
     onResultFeedLoaded: function(feed) {
       if (feed == this._resultFeed) {
-        this.render();
+
+        var html = this.listTemplate(feed.toJSON());
+        this.$(".results").html(html);
+
       }
     },
 

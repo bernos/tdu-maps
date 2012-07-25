@@ -1,23 +1,29 @@
-<h2>Standings</h2>
+<div class="page-title">
+  <h2>Standings</h2>
+</div>
 
-<ul>
-  {{#each feeds}}
-  <li>
-    <a href="#/standings/{{this.jerseyId}}">{{this.name}}</a>  
-  </li>
-  {{/each}}
-</ul>
+<div class="select-list">
 
-{{#if selectedFeed}}
-  <h3>{{selectedFeed.jerseyImage}} {{selectedFeed.name}}</h3>
+  <div class="selected-item">
+    <div class="selected-item-name">Selected item name here</div>
+    <a class="expand-btn"><i class="icon-chevron-down"></i></a>
+  </div>
 
-  {{#if selectedFeed.items}}
-    <ol>
-      {{#each selectedFeed.items}}
-        <li>
-           {{this.Number}} {{this.Name}} {{this.Time}} {{this.Team}}
-        </li>
-      {{/each}}
-    </ol>
-  {{/if}}
-{{/if}}
+  <ul class="nav items invisible">
+    {{#each feeds}}
+    <li>
+      <a href="#/standings/{{this.jerseyId}}"><div class="inner">{{this.name}}</div></a> 
+    </li>
+    {{/each}}
+  </ul>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="results"></div>

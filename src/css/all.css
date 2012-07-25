@@ -4695,13 +4695,15 @@ body {
 .page-title {
   background: #eeeeee;
   border-bottom: 1px solid #d5d5d5;
+  height: 48px;
 }
 .page-title a.back {
   width: 48px;
   border-right: 1px solid #d5d5d5;
-  display: inline-block;
+  display: block;
   line-height: 39px;
   padding-top: 6px;
+  float: left;
   color: #bbbbbb;
 }
 .page-title a.back:hover {
@@ -4713,10 +4715,59 @@ body {
   font-size: 24px;
 }
 .page-title h2 {
-  display: inline-block;
+  display: block;
+  float: left;
   padding-left: 12px;
   color: #6f6f6f;
   font-size: 20px;
+  line-height: 45px;
+  padding-top: 3px;
+}
+/**
+ * Select list
+ */
+.select-list {
+  border-top: 1px solid #ffffff;
+  font-family: "RobotoRegular", Helvetica, Arial, sans-serif;
+}
+.select-list .selected-item {
+  background: #0193cf;
+  height: 32px;
+  color: #ffffff;
+}
+.select-list .selected-item .selected-item-name {
+  float: left;
+  line-height: 32px;
+  padding-left: 12px;
+}
+.select-list .selected-item a.expand-btn {
+  color: #d0f1ff;
+  float: right;
+  width: 32px;
+  border-left: 1px solid #016f9c;
+  line-height: 30px;
+}
+.select-list .selected-item a.expand-btn:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+.select-list .selected-item a.expand-btn i {
+  margin: 0 0 0 10px;
+}
+.select-list .items {
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 0;
+  background: rgba(253, 253, 253, 0.9);
+  position: absolute;
+  width: 100%;
+}
+.select-list .items li {
+  border-bottom: 1px solid #eeeeee;
+  line-height: 32px;
+}
+.select-list .items li .inner {
+  padding-left: 12px;
 }
 body.menu-expanded #content {
   margin-left: 311px;

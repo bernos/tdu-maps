@@ -322,13 +322,15 @@ body {
 
   background: @bgColor;
   border-bottom: 1px solid @borderColor;
+  height: 48px;
 
   a.back {
     width: 48px;
     border-right: 1px solid @borderColor;
-    display: inline-block;
+    display: block;
     line-height: 39px;
     padding-top: 6px;
+    float: left;
 
     color: darken(@bgColor, 20%);
 
@@ -344,10 +346,71 @@ body {
   }
 
   h2 {
-    display: inline-block;
+    display: block;
+    float:left;
     padding-left: 12px;
     color:darken(@bgColor, 50%);
     font-size:20px;
+    line-height: 45px;
+    padding-top: 3px;
+  }
+}
+
+/**
+ * Select list
+ */
+.select-list {
+  border-top: 1px solid @white;
+  font-family: "RobotoRegular", Helvetica, Arial, sans-serif;
+
+  .selected-item {
+    @bgColor : @blue;
+
+     background: @bgColor;   
+     height: 32px;
+     color: @white;
+     
+
+     .selected-item-name {
+      float: left;
+      line-height: 32px;
+      padding-left: 12px;
+     }
+
+     a.expand-btn {
+      color: lighten(@bgColor, 50%);
+      float: right;
+      width: 32px;
+      border-left: 1px solid darken(@bgColor, 10%);
+      line-height: 30px;
+
+      &:hover {
+        text-decoration: none;
+        color: lighten(@bgColor, 70%);
+      }
+
+      i {
+        margin: 0 0 0 10px;
+      }
+     }
+  }
+
+  .items {
+    padding-left:0;
+    padding-right:0;
+    margin-bottom:0;
+    background: fade(#FDFDFD, 90%);
+    position: absolute;
+    width: 100%;
+
+    li {
+      border-bottom: 1px solid @grayLighter;
+      
+      line-height: 32px;
+      .inner {
+        padding-left: 12px;
+      }
+    }
   }
 }
 

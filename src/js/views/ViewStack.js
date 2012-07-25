@@ -24,11 +24,17 @@ define(['backbone'], function(Backbone) {
     },
 
     setCurrentView : function(name) {
+      var newView = this.get(name);
+
+      if (newView == this._currentView) {
+        return this;
+      }
+
       if (this._currentView) {
         this._currentView.remove();
       }
 
-      this._currentView = this.get(name);
+      this._currentView = newView;
 
       if (this._currentView) {
         this._currentView.render();

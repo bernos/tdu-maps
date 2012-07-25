@@ -196,8 +196,9 @@ function($, domready, _, Backbone, config, models, views, stages) {
       view.setStage(stage);
 
       var resultFeed = stage.get('results').getFeedByJerseyId(jerseyId);
+         
       view.setResultFeed(resultFeed);
-      
+
       viewStack.setCurrentView("stageResults");
 
       resultFeed.load();
