@@ -18,7 +18,9 @@ define([
   'views/StageResultsView',
   'views/StandingsView',
   'views/TeamsView',
-  'views/ViewStack'
+  'views/TeamDetailView',
+  'views/ViewStack',
+  'views/ResultFeedSelectList'
 ],
 
 function(
@@ -37,7 +39,9 @@ function(
 	StageResultsView,
 	StandingsView,
 	TeamsView,
-	ViewStack
+  TeamDetailView,
+	ViewStack,
+  ResultFeedSelectList
 ) {
 	return {
 		ViewBase       	 	: ViewBase,
@@ -54,6 +58,8 @@ function(
     StageResultsView 	: StageResultsView,
     StandingsView   	: StandingsView,
     TeamsView 				: TeamsView,
-    ViewStack       	: ViewStack
+    TeamDetailView    : TeamDetailView,
+    ViewStack       	: ViewStack,
+    ResultFeedSelectList        : ResultFeedSelectList
 	};
 });

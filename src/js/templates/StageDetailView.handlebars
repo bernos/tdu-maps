@@ -1,6 +1,58 @@
 <div class="page-title">
 	<a href="#/stages" class="back"><i class="icon-chevron-left"></i></a>
+  {{#if icon}}
+    <img class="icon" src="{{icon}}"/>
+  {{/if}}
 	<h2>{{name}}</h2>
 </div>
 
+<div class="page-content push-one">
+  <div class="stage-details">
+
+    <div class="stage-details-row stage-details-description">
+      <div class="stage-details-content">{{description}}</div>
+    </div>
+
+    <div class="stage-details-row stage-details-date">
+      <div class="stage-details-label">Date:</div>
+      <div class="stage-details-content">{{date}}</div>
+    </div>
+
+    <div class="stage-details-row stage-details-time">
+      <div class="stage-details-label">Time:</div>
+      <div class="stage-details-content">{{time}}</div>
+    </div>
+
+    {{#if circuit}}
+
+      <div class="stage-details-row stage-details-circuit">
+        <div class="stage-details-label">Circuit:</div>
+        <div class="stage-details-content">{{circuit}}</div>
+      </div>
+
+    {{/if}}
+
+    {{#if start}}
+      <div class="stage-details-row stage-details-start">
+        <div class="stage-details-label">Start:</div>
+        <div class="stage-details-content">{{start}}</div>
+      </div>
+    {{/if}}
+
+    {{#if finish}}
+      <div class="stage-details-row stage-details-finish">
+        <div class="stage-details-label">Finish</div>
+        <div class="stage-details-content">{{finish}}</div>
+      </div>
+    {{/if}}
+
+    <div class="stage-details-row stage-details-distance">
+      <div class="stage-details-label">Distance:</div>
+      <div class="stage-details-content">{{distance}}</div>
+    </div>
+
+    
+
+  </div>
 {{itemlist links}}
+</div>

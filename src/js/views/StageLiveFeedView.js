@@ -1,10 +1,11 @@
 define([
+  "underscore",
   "handlebars",
   "text!templates/StageLiveFeedView.handlebars",
   "./ViewBase"
 ], 
 
-function(handlebars, template, ViewBase) {
+function(_, handlebars, template, ViewBase) {
   return ViewBase.extend({
 
     template : Handlebars.compile(template),
@@ -29,6 +30,11 @@ function(handlebars, template, ViewBase) {
 
     templateContext: function() {
       var context = ViewBase.prototype.templateContext.apply(this, arguments);
+
+      context.liveFeed.items = _.filter(context.liveFeed.items, function(post) {
+        return (post.LinkImage === null && post.LinkVideo === null && post.LinkWeb === null);
+      });
+
       return context;
     }
   });

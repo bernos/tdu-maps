@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 	var url = ["/chart",
 					   "?chxs=0,676767,11,0,l,676767",
 					   "&chxt=y",
-					   "&chs=640x220",
+					   "&chs=380x220",
 					   "&cht=lxy",
 					   "&chco=FF0000",
 					   "&chds=-5,100,0,528.24",
@@ -67,13 +67,15 @@ module.exports = function(grunt) {
 			
 			var points = [];
 			var data = grunt.file.readJSON(file);
-			
+			var imageFile = p.basename(file).split(".")[0] + ".png";
+
 			data.forEach(function(point) {
 				points.push(Math.round(point.elevation * 100) / 100);
 			});
 
+
 			requestQueue.push({
-				file : p.join(dest, "chart-" + p.basename(file) + ".png"),
+				file : p.join(dest, imageFile),
 				requestOptions : {
 					host : "chart.apis.google.com",
 					path : url.replace("{data}", points.join(","))

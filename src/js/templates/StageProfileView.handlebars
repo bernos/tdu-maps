@@ -1,5 +1,11 @@
 <div class="page-title">
 	<a href="#/stages/{{id}}" class="back"><i class="icon-chevron-left"></i></a>
+	{{#if icon}}
+    <img class="icon" src="{{icon}}"/>
+  {{/if}}
 	<h2>{{name}}</h2>
 </div>
-Stage profile view here
+
+<div class="profile-image-wrapper">
+	<img class="profile-image" src="img/profiles/elevation-{{id}}.png"/>
+</div>

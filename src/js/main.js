@@ -1,3 +1,4 @@
+
 /*!
  * main.js
  * Our application entry point
@@ -72,11 +73,16 @@ function($, domready, _, Backbone, config, models, views, stages) {
    * loaded
    */
   function init() {
-    initRouter();
-    initModel();
-    initView();    
+    setTimeout(function() {
+      initRouter();
+      initModel();
+      initView();    
 
-    Backbone.history.start();
+      Backbone.history.start();
+
+      $("body").removeClass("preloading");
+    }, 2500);
+    
   }
 
   /**
@@ -106,6 +112,7 @@ function($, domready, _, Backbone, config, models, views, stages) {
         "stageProfile" : new views.StageProfileView(),
         "stageResults" : new views.StageResultsView(),
         "teams"        : new views.TeamsView(),
+        "team"         : new views.TeamDetailView(),
         "stagesMenu"   : new views.StagesMenuView({
           stages : stageCollection
         }),
@@ -186,6 +193,7 @@ function($, domready, _, Backbone, config, models, views, stages) {
     });
 
     router.on("route:results", function(stageId, jerseyId) {
+      console.log("show results")
       var view  = viewStack.get("stageResults");
       var stage = stageCollection.get(stageId);
 
@@ -206,6 +214,21 @@ function($, domready, _, Backbone, config, models, views, stages) {
 
     router.on("route:teams", function() {
       viewStack.setCurrentView("teams");
+    });
+
+    router.on("route:team", function(teamId) {
+      var team = _.find(config.teams, function(team) {
+        return team.url == "#/teams/" + teamId;
+      });
+
+      console.log("GOT TEAM", team);
+      var view = viewStack.get("team");
+
+      
+
+      viewStack.setCurrentView("team");
+
+      view.setTeam(team);
     });
   }
 

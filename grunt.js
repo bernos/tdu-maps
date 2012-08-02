@@ -40,7 +40,7 @@ module.exports = function(grunt) {
     elevationImages : {
       all : {
         src : 'src/js/config/elevation-stage-*.json',
-        dest : 'src/js/config',
+        dest : 'src/img/profiles',
         chartOptions : {
 
         }

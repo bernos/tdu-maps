@@ -1,13 +1,12 @@
 <div class="page-title">
   <a href="#/stages/{{stage.id}}" class="back"><i class="icon-chevron-left"></i></a>
+  {{#if stage.icon}}
+    <img class="icon" src="{{stage.icon}}"/>
+  {{/if}}
   <h2>{{stage.name}}</h2>
 </div>
 
-<h3>Results</h3>
-<ul>
-	{{#each stage.results.feeds}}
-		<li><a href="#/stages/{{../stage.id}}/results/{{this.jerseyId}}">{{this.name}}</a></li>
-	{{/each}}
-</ul>
-
-<div class="results"></div>
+<div class="jersies"></div>
+<div class="page-content push-two">
+  <div class="results"></div>
+</div>

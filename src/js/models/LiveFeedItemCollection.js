@@ -13,7 +13,12 @@ function(config, _, Backbone) {
 		},
 
 		parse: function(results) {
-			return results.Postings;
+			console.log("results", results.Postings);
+			return _.map(results.Postings, function(post) {
+				post.Text = post.Text.replace(/\r\n/g, "<br/>");
+				post.Date = new Date(parseFloat(/Date\(([^)]+)\)/.exec(post.Date)[1]));
+				return post;
+			});
 		},
 
 		url : function() {

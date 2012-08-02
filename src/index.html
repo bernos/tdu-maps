@@ -4,10 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
    
     <link rel="stylesheet" href="css/all.css"/>
-    <script type="text/javascript" src="js/lib/require.js" data-main="js/main.js"></script>    
+      
   </head>
-  <body>
+  <body class="preloading">
 
+    <div id="splash"></div>
 
     <div id="main-menu">
       <ul class="nav nav-list">
@@ -39,11 +40,6 @@
             </div>
           </a>
         </li>
-        <li class="nav-header">Another list header</li>
-        <li><a href="#"><i class="icon-user"></i> Profile</a></li>
-        <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
-        <li class="divider"></li>
-        <li><a href="#"><i class="icon-flag"></i> Help</a></li>
       </ul>
     </div>
 
@@ -51,15 +47,19 @@
       <div id="header" class="app-title">
         <div class="app-title-inner">
 
-            <a href="#" id="menu-btn"><i class="icon-reorder"></i></a>            
+            <a href="#" id="menu-btn"><i class="icon-reorder"></i></a> 
+
+            <img class="logo" src="img/header-logo.png"/>           
             <!--<a class="brand" href="./index.html">Santos tour down under</a> -->
 
         </div>
       </div>
       <div id="page"></div>
-      
+      <div id="advertisement">
+        <img src="img/advertisement.png"/>
+      </div>
     </div>
 
-
+    <script type="text/javascript" src="js/lib/require.js" data-main="js/main.js"></script>  
   </body>
 </html>

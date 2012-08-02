@@ -19,6 +19,7 @@ define(["gmaps"], function(gmaps) {
     "standings"               : "standings",
     "standings/:jerseyId"      : "standings",
     "teams"                   : "teams",
+    "teams/:teamId"           : "team",
     ""                        : "home"
   };
 
@@ -37,6 +38,31 @@ define(["gmaps"], function(gmaps) {
   ];
 
   /**
+   * Teams
+   */
+  var teams = [
+    { url : "#/teams/ALM", label : "AG2R LA MONDIALE" },
+    { url : "#/teams/APT", label : "ASTANA PRO TEAM" },
+    { url : "#/teams/BRT", label : "BMC RACING TEAM" },
+    { url : "#/teams/FBM", label : "EQUIPE CYCLISTE FDJ - BIG MAT" },
+    { url : "#/teams/EEU", label : "EUSKALTEL - EUSKADI" },
+    { url : "#/teams/GBA", label : "GARMIN - BARRACUDA" },
+    { url : "#/teams/GCT", label : "GREENEDGE CYCLING TEAM" },
+    { url : "#/teams/KTE", label : "KATUSHA TEAM" },
+    { url : "#/teams/LIS", label : "LAMPRE - ISD" },
+    { url : "#/teams/LCA", label : "LIQUIGAS - CANNONDALE" },
+    { url : "#/teams/LBE", label : "LOTTO - BELISOL" },
+    { url : "#/teams/MTE", label : "MOVISTAR TEAM" },
+    { url : "#/teams/OQS", label : "OMEGA PHARMA - QUICK-STEP CYCLING TEAM" },
+    { url : "#/teams/RNI", label : "RADIOSHACK - NISSAN" },
+    { url : "#/teams/RBK", label : "RABOBANK" },
+    { url : "#/teams/SKY", label : "SKY PROCYCLING" },
+    { url : "#/teams/TSB", label : "TEAM SAXO BANK" },
+    { url : "#/teams/UAU", label : "UNISA AUSTRALIA" },
+    { url : "#/teams/VDC", label : "VACANSOLEIL - DCM" }
+  ];
+
+  /**
    * Options for the main mapview. Any google maps configurations should
    * be added to the googleMapsOptions object here.
    */
@@ -45,7 +71,7 @@ define(["gmaps"], function(gmaps) {
     googleMapsOptions : {
       center: new gmaps.LatLng(-34.78928170189535, 138.74443334960938),
       zoom: 9,
-      mapTypeId: gmaps.MapTypeId.HYBRID
+      mapTypeId: gmaps.MapTypeId.ROADMAP
     }
   };
 
@@ -101,6 +127,7 @@ define(["gmaps"], function(gmaps) {
     kmlPath     : '/kml',
     useStageKml : false,
     routes      : routes,
+    teams       : teams,
 
     resultFeeds : {
       /**

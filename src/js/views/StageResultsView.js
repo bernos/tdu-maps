@@ -2,10 +2,11 @@ define([
   "handlebars",
   "text!templates/StageResultsView.handlebars",
   "text!templates/ResultsListView.handlebars",
-  "./ViewBase"
+  "./ViewBase",
+  "./ResultFeedSelectList"
 ], 
 
-function(handlebars, template, listTemplate, ViewBase) {
+function(handlebars, template, listTemplate, ViewBase, ResultFeedSelectList) {
   return ViewBase.extend({
 
     template : Handlebars.compile(template),
@@ -14,6 +15,21 @@ function(handlebars, template, listTemplate, ViewBase) {
 
     initialize : function(options) {
       options = options || {};
+
+      var view = this;
+      var getStageId = function() {
+        return view._stage.get('id');
+      };
+
+      this.selectList = new ResultFeedSelectList({
+        formatTemplateItem : function(itemModel) {
+          return {
+            id : itemModel.get('jerseyId'),
+            label : itemModel.get('name'),
+            value : "#/stages/" + getStageId() + "/results/" + itemModel.get('jerseyId')
+          };
+        }
+      });
     },
 
     onResultFeedLoaded: function(feed) {
@@ -32,13 +48,18 @@ function(handlebars, template, listTemplate, ViewBase) {
 
       this._stage = stage;
       this._stage.get("results").bind("feed:loaded", this.onResultFeedLoaded, this);
-
+      this.selectList.model = this._stage.get("results").get("feeds");
       this.render();
     },
 
     setResultFeed : function(resultFeed) {
       this._resultFeed = resultFeed;
-      this.render();
+      this.selectList.setSelectedItem(resultFeed);
+    },
+
+    render : function() {
+      ViewBase.prototype.render.apply(this, arguments);
+      this.$(".jersies").append(this.selectList.render().el);
     },
 
     templateContext: function() {

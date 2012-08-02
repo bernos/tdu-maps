@@ -61,6 +61,8 @@ function(gmaps, Backbone, _) {
 				position : points[points.length - 1]
 			});
 
+			
+
 			polyLine.setMap(this.googleMap);
 		},
 

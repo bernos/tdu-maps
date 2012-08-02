@@ -21,7 +21,6 @@ function(Handlebars, template, ViewBase) {
 		templateContext: function() {
 			var context = ViewBase.prototype.templateContext.apply(this, arguments);
 			context.items = this.model.get('items').toJSON();
-			console.log(context);
 			return context;
 		}
 	});

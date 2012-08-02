@@ -1,8 +1,14 @@
-<h4>{{name}}</h4>
-<ol>
+<ul class="results-list">
   {{#each items}}
     <li>
-       {{this.Number}} {{this.Name}} {{this.Time}} {{this.Team}}
+      <div class="result-position">{{this.Position}}</div>
+      <div class="result-content">
+        <div class="result-name">
+          <span class="name">{{this.Name}}</span>
+          <span class="number">{{this.Time}}</span>          
+        </div>
+        <div class="result-body">{{this.Team}}<div>
+      </div>       
     </li>
   {{/each}}
-</ol>
+</ul>

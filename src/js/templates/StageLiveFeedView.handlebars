@@ -1,12 +1,21 @@
 <div class="page-title">
 	<a href="#/stages/{{id}}" class="back"><i class="icon-chevron-left"></i></a>
+  {{#if icon}}
+    <img class="icon" src="{{icon}}"/>
+  {{/if}}
 	<h2>{{name}}</h2>
 </div>
-
-{{#if liveFeed.items.length}}
-	<ul>
-	{{#each liveFeed.items}}	
-		<li>{{{this.Text}}</li>	
-	{{/each}}
-	</ul>
-{{/if}}
+<div class="page-content push-one">
+  {{#if liveFeed.items.length}}
+  	<ul class="article-list">
+  	{{#each liveFeed.items}}	
+  		<li>        
+        <div class="article-body">BODY {{{this.Text}}</div>
+        <div class="article-date">
+          <div class="article-date-inner">{{feed-date this.Date}}</div>
+        </div>
+      </li>	
+  	{{/each}}
+  	</ul>
+  {{/if}}
+</div>

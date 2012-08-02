@@ -22,7 +22,8 @@ function(handlebars, template, ViewBase, _) {
       context.stageItemList = _.map(this.stages.models, function(stage) {
         return {
           url : "#/stages/" + stage.get('id'),
-          label : stage.get('name')
+          label : stage.get('name'),
+          icon : stage.get('icon')
         };
       });
 

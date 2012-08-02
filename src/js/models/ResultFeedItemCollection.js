@@ -25,6 +25,11 @@ function(config, _, Backbone, ResultFeedItem) {
 		},
 
 		parse : function(results) {
+			_.each(results.Items, function(item, index) {
+				if (!item.Position) {
+					item.Position = index + 1;
+				}
+			});
 			return results.Items;
 		}
 	});

@@ -2,46 +2,27 @@ define([
   "handlebars",
   "text!templates/StandingsView.handlebars",
   "text!templates/ResultsListView.handlebars",
-  "./ViewBase"
+  "./ViewBase",
+  "./ResultFeedSelectList"
 ], 
 
-function(handlebars, template, listTemplate, ViewBase) {
+function(handlebars, template, listTemplate, ViewBase, ResultFeedSelectList) {
   return ViewBase.extend({
 
     template : Handlebars.compile(template),
 
     listTemplate : Handlebars.compile(listTemplate),
 
-    events : {
-      'click .select-list .selected-item' : 'toggleItems',
-      'click .select-list .items a' : 'itemSelected'
-    },
-
-    itemSelected : function(e) {
-      this.$('.select-list .items').addClass('invisible');
-    },
-
-    toggleItems : function(e) {
-      var $list = this.$('.select-list .items');
-
-      if ($list.hasClass('invisible')) {
-        $list.removeClass('invisible');
-      } else {
-        $list.addClass('invisible');
-      }
-
-      e.preventDefault();
-    },
-
     onFeedLoaded : function(feed) {
       if (feed == this._feed) {
         var html = this.listTemplate(feed.toJSON());
         this.$(".results").html(html);
-      }      
+      }
     },
 
     setFeed : function(feed) {
       this._feed = feed;
+      this.selectList.setSelectedItem(feed);
     },
 
     initialize : function(options) {
@@ -50,6 +31,23 @@ function(handlebars, template, listTemplate, ViewBase) {
       if (this.model) {
         this.model.bind("feed:loaded", this.onFeedLoaded, this);
       }
+
+      this.selectList = new ResultFeedSelectList({
+        model : this.model.get("feeds"),
+
+        formatTemplateItem : function(itemModel) {
+          return {
+            id : itemModel.get('jerseyId'),
+            label : itemModel.get('name'),
+            value : "#/standings/" + itemModel.get('jerseyId')
+          };
+        }
+      });
+    },
+
+    render : function() {
+      ViewBase.prototype.render.apply(this, arguments);
+      this.$(".jersies").append(this.selectList.render().el);
     },
 
     templateContext: function() {

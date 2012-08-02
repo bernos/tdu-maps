@@ -1,0 +1,16 @@
+<div class="select-list">
+
+  <div class="selected-item">
+    <div class="selected-item-name">{{selectedItem.label}}</div>
+    <a class="expand-btn"><i class="icon-chevron-down"></i></a>
+  </div>
+
+  <ul class="nav item-list invisible">
+    {{#each items}}
+    <li>
+      <a href="{{this.value}}" data-item-id="{{this.id}}"><div class="item-inner">{{this.label}}</div></a> 
+    </li>
+    {{/each}}
+  </ul>
+
+</div>

@@ -51,6 +51,19 @@ function(gmaps, _, handlebars, template, ViewBase) {
         position : points[points.length - 1]
       });
 
+      var bounds = new gmaps.LatLngBounds();
+
+      for (var i = 0, m = points.length; i < m; i++) {
+        console.log("extn")
+        bounds.extend(points[i]);
+      }
+
+      this.googleMap.setZoom(stage.get('mapzoom'));
+      this.googleMap.panToBounds(bounds);
+      this.googleMap.setCenter(bounds.getCenter());
+
+
+
       polyLine.setMap(this.googleMap);
     },
 
